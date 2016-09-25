@@ -50,9 +50,6 @@ public function data_post(){
 		'u_joindate' => date('y-m-d')
 	);
 
-	if ($data['u_username']==) {
-		# code...
-	}
 	$this->User_model->insert($data);
 	$message = [
 		'status' => TRUE,
