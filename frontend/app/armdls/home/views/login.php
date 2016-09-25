@@ -6,9 +6,10 @@
           <div class="brand text-center">
             <h1>
               <div class="logo-icon">
-                <i class="icon-beer"></i>
+                <!--<i class="icon-beer"></i>-->
+                <img src="assets/img/heart.png" width="75px" height="75px" margin-left="auto" margin-right= "auto">
               </div>
-              Hierapolis
+              E-Apotek
             </h1>
           </div>
         </div>
@@ -17,13 +18,13 @@
         <div class="col-lg-12">
           <form method="POST" action="home/login">
             <fieldset class="text-center">
-       <?php   
+       <?php
        if(isset($message_error) && $message_error){
           echo '<div class="alert alert-error">';
             echo '<a class="close" data-dismiss="alert">×</a>';
             echo '<strong>Oh snap!</strong> Change a few things up and try submitting again.';
-         
-          echo '</div>'; 
+
+          echo '</div>';
 
       }?>
               <legend>Login to your account</legend>
