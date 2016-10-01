@@ -43,6 +43,7 @@ public function update($data){
 		return FALSE;
 	}
 }
+// check existing username
 public function check_username($username){
 	if($username===NULL){
 		$replace = "" ;
@@ -50,8 +51,9 @@ public function check_username($username){
 	else{
 		$replace = "=$username";
 	}
-
+	// query get $username from database
 	$query = $this->db->query("select * from user where u_username".$replace);
+	// if query return more than 0 rows
 	if ($query->num_rows() > 0) {
 		return FALSE;
 	}
@@ -59,13 +61,17 @@ public function check_username($username){
 		return TRUE;
 	}
 }
+// check username and password
 public function check_password($username,$password){
-	$query = $this->db->query("select * from user where u_username".$replace." AND u_password=".$password);
+	// query get data user
+	$query = $this->db->query("select * from user where u_username='".$username."' AND u_password='".$password."'");
+	// if query return != 0
 	if ($query->num_rows() != 1) {
 		return FALSE;
 	}
 	else{
-		return TRUE;
+		// returning in array
+		return $query->result_array();
 	}
 }
 }
