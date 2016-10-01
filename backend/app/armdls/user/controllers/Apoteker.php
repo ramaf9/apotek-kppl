@@ -67,7 +67,8 @@ class Apoteker extends User{
     		'ro_obat' => $data['obat'],
     		'ro_quantity' => $data['quantity'],
     		'ro_pasien' => $data['pasien'],
-            'ro_status' => 0
+            'ro_status' => 0,
+            'ro_date' => date("Y/m/d")
     	);
         // call user_model method to insert $content
         $this->User_model->insert($data);
