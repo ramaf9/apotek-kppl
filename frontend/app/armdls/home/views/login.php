@@ -5,10 +5,7 @@
         <div class="col-lg-12">
           <div class="brand text-center">
             <h1>
-              <div class="logo-icon">
-                <!--<i class="icon-beer"></i>-->
-                <img src="assets/img/heart.png" width="75px" height="75px" margin-left="auto" margin-right= "auto">
-              </div>
+              <img src="assets/img/heart.png" width="75px" height="75px" margin-left="auto" margin-right= "auto">
               E-Apotek
             </h1>
           </div>
@@ -27,23 +24,23 @@
           echo '</div>';
 
       }?>
-              <legend>Login to your account</legend>
+              <legend>Selamat Datang di E-Apotek</legend>
               <div class="form-group">
                 <input class="form-control" placeholder="Username" type="text" name="username" autocomplete="off">
               </div>
               <div class="form-group">
                 <input class="form-control" placeholder="Password" type="password" name="password" autocomplete="off">
               </div>
-              <div class="text-center">
+              <!--<div class="text-center">
                 <div class="checkbox">
                   <label>
                     <input type="checkbox">
                     Remember me on this computer
                   </label>
-                </div>
+                </div>-->
                 <a><button class="btn btn-default" type="submit">Sign in</button></a>
                 <br>
-                <a href="">Forgot password?</a>
+                <!--<a href="">Forgot password?</a>-->
               </div>
             </fieldset>
           </form>
