@@ -7,7 +7,8 @@ class Apoteker extends User{
     public function __construct() {
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
-        if ($data['role'] != 3) {
+        // 4 is code of apoteker role
+        if ($data['role'] != 4) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
@@ -46,6 +47,7 @@ class Apoteker extends User{
     }
     // Retrieve all requested obat
     public function request_obat_get(){
+        $id = $this->input->get('id');
         $data = $this->Request_obat_model->read($id);
         if ($data) {
             // send all requested obat response
@@ -79,4 +81,5 @@ class Apoteker extends User{
     	];
     	$this->set_response($message, REST_Controller::HTTP_CREATED);
     }
+
 }
