@@ -31,7 +31,7 @@ public function delete($id){
 // Update Query
 public function update($data){
 	// set $id from $data array
-	$id= $data['id'];
+	$id= $data['u_id'];
 	// query update $id data from database
 	$this->db->where('u_id',$id);
 	$query = $this->db->update('user',$data);

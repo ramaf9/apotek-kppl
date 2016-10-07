@@ -16,4 +16,31 @@ class Obat_model extends CI_Model{
     	// return $query as array
     	return $query->result_array();
     }
+    public function insert($data){
+    	// query inserting new data to database
+    	$this->db->insert('obat', $data);
+    	return TRUE;
+    }
+    // Delete Query
+    public function delete($id){
+    	// query delete $id data from database
+    	$query = $this->db->query("delete from obat where o_id=$id");
+    	return TRUE;
+    }
+    // Update Query
+    public function update($data){
+    	// set $id from $data array
+    	$id= $data['o_id'];
+    	// query update $id data from database
+        $this->db->set('o_quantity', 'o_quantity + ' . (int) $data['o_quantity'], FALSE);
+    	$this->db->where('o_id',$id);
+    	$query = $this->db->update('obat',$data);
+    	// check if query return true
+    	if ($query) {
+    		return TRUE;
+    	}
+    	else{
+    		return FALSE;
+    	}
+    }
 }

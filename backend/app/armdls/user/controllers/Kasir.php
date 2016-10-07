@@ -7,6 +7,7 @@ class Apoteker extends User{
     public function __construct() {
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
+        // 3 is Kasir role
         if ($data['role'] != 3) {
             $this->response([
                 'status' => FALSE,

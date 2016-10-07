@@ -20,6 +20,6 @@ class Home extends CI_Controller {
   function __encrip_password($password) {
         return md5($password);
     }
-    
+
 
 }

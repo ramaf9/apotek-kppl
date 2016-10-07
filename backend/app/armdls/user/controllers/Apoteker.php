@@ -15,6 +15,7 @@ class Apoteker extends User{
             ], REST_Controller::HTTP_FORBIDDEN);
         }
         $this->load->model('obat/Obat_model');
+        $this->load->model('obat/Request_obat_model');
     }
     // Retrieve all obat method
     public function obat_get($id_param = NULL){
@@ -24,7 +25,7 @@ class Apoteker extends User{
     		$id = $id_param;
     	}
     	/*
-            call read method from user_model that will get
+            call read method from Obat_model that will get
             all data from database
 
         */
@@ -72,14 +73,36 @@ class Apoteker extends User{
             'ro_status' => 0,
             'ro_date' => date("Y/m/d")
     	);
-        // call user_model method to insert $content
-        $this->User_model->insert($data);
+        // call Obat_model method to insert $content
+        $this->Request_obat_model->insert($data);
     	// send success response
     	$message = [
     		'status' => TRUE,
     		'message' => 'Request created'
     	];
     	$this->set_response($message, REST_Controller::HTTP_CREATED);
+    }
+    public function pengadaan_put(){
+        $data = $this->input->input_stream();
+
+        $data = $this->Pengadaan_obat_model->update($data);
+
+    	if ($data) {
+    		// send success response
+    		$message = [
+    			'status' => TRUE,
+    			'message' => 'pengadaan success'
+    		];
+    		$this->set_response($message, REST_Controller::HTTP_CREATED);
+    	}
+    	else{
+    		// send success response
+    		$message = [
+    			'status' => FALSE,
+    			'message' => 'pengadaan failed'
+    		];
+    		$this->set_response($message, REST_Controller::HTTP_OK);
+    	}
     }
 
 }
