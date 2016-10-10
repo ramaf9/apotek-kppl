@@ -8,7 +8,7 @@ class Pengadaan extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 5 is code of pengadaan role
-        if ($data['role'] != 5) {
+        if ($data['role'] != 3) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
@@ -66,36 +66,6 @@ class Pengadaan extends User{
     		'message' => $data['o_name'].' created'
     	];
     	$this->set_response($message, REST_Controller::HTTP_CREATED);
-    }
-    // Server's Put Method
-    public function obat_put(){
-    	// retrieve data from stream
-    	$data = $this->input->input_stream();
-    	/*
-    		call update method from Obat_model that will update
-    		$id user data from database
-
-    	*/
-    	$data = $this->Obat_model->update($data);
-
-    	if ($data) {
-    		// send success response
-    		$message = [
-    			'status' => TRUE,
-    			'message' => 'update success'
-    		];
-    		$this->set_response($message, REST_Controller::HTTP_CREATED);
-    	}
-    	else{
-    		// send success response
-    		$message = [
-    			'status' => FALSE,
-    			'message' => 'update failed'
-    		];
-    		$this->set_response($message, REST_Controller::HTTP_OK);
-    	}
-
-
     }
     // Server's Delete Method
     public function obat_delete(){
@@ -167,6 +137,39 @@ class Pengadaan extends User{
                 'error' => 'No request were found'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
+    }
+    public function pengadaan_confirm_put(){
+        $data = $this->input->input_stream();
+        $data['quantity'] = '+'.$data['quantity'];
+        $result = $this->Obat_model->update($data);
+
+    	if ($result) {
+            $result = $this->Pengadaan_obat_model->update($data['po_id']);
+            if ($result) {
+                // send success response
+        		$message = [
+        			'status' => TRUE,
+        			'message' => 'pengadaan success'
+        		];
+        		$this->set_response($message, REST_Controller::HTTP_CREATED);
+            }
+            else{
+                // send failed response
+                $message = [
+                    'status' => FALSE,
+                    'message' => 'pengadaan failed'
+                ];
+                $this->set_response($message, REST_Controller::HTTP_OK);
+            }    
+    	}
+    	else{
+    		// send failed response
+    		$message = [
+    			'status' => FALSE,
+    			'message' => 'pengadaan failed'
+    		];
+    		$this->set_response($message, REST_Controller::HTTP_OK);
+    	}
     }
 
 }

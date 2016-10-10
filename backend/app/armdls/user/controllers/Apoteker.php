@@ -8,7 +8,7 @@ class Apoteker extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 4 is code of apoteker role
-        if ($data['role'] != 4) {
+        if ($data['role'] != 3) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
@@ -82,27 +82,4 @@ class Apoteker extends User{
     	];
     	$this->set_response($message, REST_Controller::HTTP_CREATED);
     }
-    public function pengadaan_put(){
-        $data = $this->input->input_stream();
-
-        $data = $this->Pengadaan_obat_model->update($data);
-
-    	if ($data) {
-    		// send success response
-    		$message = [
-    			'status' => TRUE,
-    			'message' => 'pengadaan success'
-    		];
-    		$this->set_response($message, REST_Controller::HTTP_CREATED);
-    	}
-    	else{
-    		// send success response
-    		$message = [
-    			'status' => FALSE,
-    			'message' => 'pengadaan failed'
-    		];
-    		$this->set_response($message, REST_Controller::HTTP_OK);
-    	}
-    }
-
 }

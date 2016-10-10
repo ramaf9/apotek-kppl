@@ -32,8 +32,9 @@ class Obat_model extends CI_Model{
     	// set $id from $data array
     	$id= $data['o_id'];
     	// query update $id data from database
-        $this->db->set('o_quantity', 'o_quantity + ' . (int) $data['o_quantity'], FALSE);
+        $this->db->set('o_quantity', 'o_quantity + ' . (int) $data['quantity'], FALSE);
     	$this->db->where('o_id',$id);
+        $data = [];
     	$query = $this->db->update('obat',$data);
     	// check if query return true
     	if ($query) {

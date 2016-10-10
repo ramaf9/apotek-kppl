@@ -21,4 +21,19 @@ class Request_obat_model extends CI_Model{
     	$this->db->insert('request_obat', $data);
     	return TRUE;
     }
+    public function update($id){
+        // $id = $data['id'];
+    	// change status value to 1
+    	$data['ro_status'] = 1;
+    	// query update $id data from database
+    	$this->db->where('ro_id',$id);
+    	$query = $this->db->update('request_obat',$data);
+    	// check if query return true
+    	if ($query) {
+    		return TRUE;
+    	}
+    	else{
+    		return FALSE;
+    	}
+    }
 }

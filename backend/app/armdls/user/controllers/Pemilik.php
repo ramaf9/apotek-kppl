@@ -8,20 +8,19 @@ class Pemilik extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 1 is code of pemilik role
-        if ($data['role'] != 1) {
+        if ($data['role'] != 3) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
         $this->load->model('obat/Obat_model');
-        $this->load->model('obat/Request_obat_model');
-        $this->load->model('obat/Pengadaan_obat_model');
+        $this->load->model('obat/Laporan_model');
     }
     // Retrieve all requested obat
-    public function request_obat_get(){
+    public function laporan_ro_get(){
         $id = $this->input->get('id');
-        $data = $this->Request_obat_model->read($id);
+        $data = $this->Laporan_model->join_request_o(NULL);
         if ($data) {
             // send all requested obat response
             $this->response($data, REST_Controller::HTTP_OK);
@@ -34,9 +33,9 @@ class Pemilik extends User{
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }
-    public function pengadaan_obat_get(){
+    public function laporan_po_get(){
         $id = $this->input->get('id');
-        $data = $this->Pengadaan_obat_model->read($id);
+        $data = $this->Laporan_model->join_pengadaan_o(NULL);
         if ($data) {
             // send all requested obat response
             $this->response($data, REST_Controller::HTTP_OK);
@@ -45,7 +44,7 @@ class Pemilik extends User{
             // send failed response
             $this->response([
                 'status' => FALSE,
-                'error' => 'No request were found'
+                'error' => 'No pengadaan were found'
             ], REST_Controller::HTTP_NOT_FOUND);
         }
     }

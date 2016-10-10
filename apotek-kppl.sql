@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 01, 2016 at 02:52 PM
+-- Generation Time: Oct 10, 2016 at 01:03 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -34,6 +34,37 @@ CREATE TABLE `obat` (
   `o_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `obat`
+--
+
+INSERT INTO `obat` (`o_id`, `o_name`, `o_price`, `o_unit`, `o_quantity`) VALUES
+(1, 'Vitamin c', 2000, 'BOTOL', 0),
+(2, 'Betadin', 3000, 'PIL', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengadaan_obat`
+--
+
+CREATE TABLE `pengadaan_obat` (
+  `po_id` int(11) NOT NULL,
+  `po_obat` int(11) NOT NULL,
+  `po_quantity` int(11) NOT NULL,
+  `po_vendor` varchar(255) NOT NULL,
+  `po_status` int(11) NOT NULL,
+  `po_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengadaan_obat`
+--
+
+INSERT INTO `pengadaan_obat` (`po_id`, `po_obat`, `po_quantity`, `po_vendor`, `po_status`, `po_date`) VALUES
+(1, 1, 30, 'PT MEDIA', 0, '2016-10-10'),
+(2, 2, 30, 'PT MEDIA', 0, '2016-10-10');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +79,14 @@ CREATE TABLE `request_obat` (
   `ro_status` int(11) NOT NULL,
   `ro_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `request_obat`
+--
+
+INSERT INTO `request_obat` (`ro_id`, `ro_obat`, `ro_quantity`, `ro_pasien`, `ro_status`, `ro_date`) VALUES
+(1, 1, 10, 'Rama rahmanda', 1, '2016-10-10'),
+(2, 1, 5, 'Kuntoy', 0, '2016-10-10');
 
 -- --------------------------------------------------------
 
@@ -92,7 +131,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `u_username`, `u_password`, `u_email`, `u_telp`, `u_role`) VALUES
-(1, 'rama', 'rama', 'rama', 'yeyrama@gmail.com', '00000', 3);
+(1, 'rama', 'rama', 'rama', 'yey@ahoy', '00000', 3);
 
 --
 -- Indexes for dumped tables
@@ -103,6 +142,12 @@ INSERT INTO `user` (`u_id`, `u_name`, `u_username`, `u_password`, `u_email`, `u_
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`o_id`);
+
+--
+-- Indexes for table `pengadaan_obat`
+--
+ALTER TABLE `pengadaan_obat`
+  ADD PRIMARY KEY (`po_id`);
 
 --
 -- Indexes for table `request_obat`
@@ -127,10 +172,20 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `obat`
+--
+ALTER TABLE `obat`
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `pengadaan_obat`
+--
+ALTER TABLE `pengadaan_obat`
+  MODIFY `po_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `request_obat`
 --
 ALTER TABLE `request_obat`
-  MODIFY `ro_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ro_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --

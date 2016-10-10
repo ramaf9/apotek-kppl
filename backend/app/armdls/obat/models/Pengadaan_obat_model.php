@@ -12,7 +12,7 @@ class Pengadaan_obat_model extends CI_Model{
     		$replace = "=$id";
     	}
     	// query get data $id data from database
-    	$query = $this->db->query("select * from pengadaan_obat where ro_id".$replace);
+    	$query = $this->db->query("select * from pengadaan_obat where po_id".$replace);
     	// return $query as array
     	return $query->result_array();
     }
@@ -21,4 +21,20 @@ class Pengadaan_obat_model extends CI_Model{
     	$this->db->insert('pengadaan_obat', $data);
     	return TRUE;
     }
+    public function update($id){
+        // $id = $data['id'];
+    	// change status value to 1
+    	$data['po_status'] = 1;
+    	// query update $id data from database
+    	$this->db->where('po_id',$id);
+    	$query = $this->db->update('pengadaan_obat',$data);
+    	// check if query return true
+    	if ($query) {
+    		return TRUE;
+    	}
+    	else{
+    		return FALSE;
+    	}
+    }
+
 }
