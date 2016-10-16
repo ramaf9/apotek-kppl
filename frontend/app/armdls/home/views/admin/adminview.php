@@ -34,7 +34,7 @@
     <p class="login-box-msg">Selamat Datang, Admin</p>
 
     <div style="text-align: center">
-    <a class="btn btn-app" align>
+    <a class="btn btn-app" href="<?php echo base_url('home/admin/adduser'); ?>" align>
       <i class="fa fa-user-plus"></i> Tambah User
     </a>
     <a class="btn btn-app">

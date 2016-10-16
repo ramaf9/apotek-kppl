@@ -17,7 +17,7 @@ class Home extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => 'http://localhost/backend',
+		$config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -29,13 +29,29 @@ class Home extends CI_Controller {
 
 		// Run some setup
 		$this->rest->initialize($config);
-		
+
 	}
 
 	public function index()
 	{
 		if ($this->session->userdata('logged_in')) {
-			$this->load->view('adminview');
+			$role = $this->session->userdata('role');
+			if ($role == 1) {
+				# code...
+			}
+			else if ($role == 2){
+				$this->load->view('admin/adminview');
+			}
+			else if ($role == 3){
+				$this->load->view('kasir/kasirmenu');
+			}
+			else if ($role == 4){
+
+			}
+			else if ($role == 5){
+				$this->load->view('pengadaan/pengadaanview');
+			}
+
 		}
 		else{
 			if ($this->input->server('REQUEST_METHOD') == 'GET')
@@ -65,12 +81,18 @@ class Home extends CI_Controller {
 						# code...
 					}
 					else if ($role == 2){
-
+						$this->load->view('admin/adminview');
 					}
 					else if ($role == 3){
-						$this->load->view('adminview');
+						$this->load->view('kasir/kasirmenu');
 					}
-					
+					else if ($role == 4){
+
+					}
+					else if ($role == 5){
+						$this->load->view('pengadaan/pengadaanview');
+					}
+
 					$this->session->set_userdata($user['data']);
 					// echo json_encode($this->session->userdata('logged_in'));
 					// $this->session->sess_destroy();
@@ -80,8 +102,8 @@ class Home extends CI_Controller {
 				}
 		   }
 
-		}		
-		
+		}
+
 	}
 	public function logout(){
 		$this->session->sess_destroy();
@@ -92,6 +114,6 @@ class Home extends CI_Controller {
   	/*function __encrip_password($password) {
         return md5($password);
     }*/
-    
+
 
 }

@@ -33,34 +33,41 @@
   <div class="login-box-body">
     <p class="login-box-msg">Tambah User</p>
 
-    <form action="../../index2.html" method="post">
+    <form method="post">
+        <div class="form-group has-feedback">
+          <input type="username" class="form-control" placeholder="Name" name="name" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username">
+        <input type="username" class="form-control" placeholder="Username" name="username" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username">
+        <input type="email" class="form-control" placeholder="Email" name="email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="phonenumber" class="form-control" placeholder="No Telepon">
+        <input type="phonenumber" class="form-control" placeholder="No Telepon" name="telp" required>
         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group">
                   <label>Role</label>
-                  <select class="form-control">
-                    <option>Apoteker</option>
-                    <option>Pengadaan</option>
-                    <option>Kasir</option>
-                    <option>Pemilik</option>
+                  <select class="form-control" name="role">
+                    <option value="4">Apoteker</option>
+                    <option value="5">Pengadaan</option>
+                    <option value="3">Kasir</option>
+                    <option value="1">Pemilik</option>
                   </select>
                 </div>
       <div class="row">
         <div class="col-xs-8">
+            <?php if(isset($message)){
+                echo '<p style="color:green;">'.$message.'</p>';
+            } ?>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

@@ -8,7 +8,7 @@ class Admin extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 2 is code of admin role
-        if ($data['role'] != 3) {
+        if (isset($data) && $data['role'] != 2) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
@@ -129,7 +129,7 @@ class Admin extends User{
     	// Server's Delete Method
     	public function data_delete(){
     		// retrieve data from current third segment
-    		$id = $this->uri->segment(3);
+    		$id = $this->input->get('id');
     		// check if $id is null
     		if($id===NULL){
     			// send failed response

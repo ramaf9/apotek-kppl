@@ -8,7 +8,7 @@ class Pengadaan extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 5 is code of pengadaan role
-        if ($data['role'] != 3) {
+        if ($data['role'] != 5) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
@@ -160,7 +160,7 @@ class Pengadaan extends User{
                     'message' => 'pengadaan failed'
                 ];
                 $this->set_response($message, REST_Controller::HTTP_OK);
-            }    
+            }
     	}
     	else{
     		// send failed response

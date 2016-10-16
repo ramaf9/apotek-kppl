@@ -8,7 +8,7 @@ class Pemilik extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 1 is code of pemilik role
-        if ($data['role'] != 3) {
+        if ($data['role'] != 1) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
