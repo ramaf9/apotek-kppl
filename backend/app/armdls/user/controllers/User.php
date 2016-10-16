@@ -13,8 +13,9 @@ class User extends REST_Controller{
 	// Server's login method
 	public function login_post(){
 		// retrieve login data from post method
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+		$data = $this->input->post('input');
+		$username = $data['username'];
+		$password = $data['password'];
 		// initialize empty array
 		$message = [];
 		// check if $username or $password is null
@@ -22,7 +23,7 @@ class User extends REST_Controller{
 			// set success response
 			$message = [
 				'status' => FALSE,
-				'message' => 'Login failed'
+				'message' => 'Tidak ada id dan password'
 			];
 		}
 		else{
@@ -47,7 +48,8 @@ class User extends REST_Controller{
 					'status' => TRUE,
 					'message' => 'Login success'
 				];
-				array_push($message,$newdata);
+				$message['data'] = $newdata;
+				// array_push($message,$newdata);
 			}
 			else{
 				// set failed response

@@ -40,6 +40,9 @@
     <a class="btn btn-app">
       <i class="fa fa-user-times"></i> Hapus User
     </a>
+    <a class="btn btn-app" href="home/logout">
+      <i class="fa fa-user-times"></i> Log out
+    </a>
     </div>
         <!-- /.col -->
       </div>

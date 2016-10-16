@@ -33,13 +33,13 @@
   <div class="login-box-body">
     <p class="login-box-msg">Login</p>
 
-    <form action="../../index2.html" method="post">
+    <form method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Username">
+        <input type="text" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -70,7 +70,7 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <!-- iCheck -->
-<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"ss></script>
+<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"></script>
 <script>
   $(function () {
     $('input').iCheck({
