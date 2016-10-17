@@ -14,11 +14,7 @@ class Admin extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-<<<<<<< HEAD
 		$config = array('server'            => rest_url,
-=======
-		$config = array('server'            => 'http://localhost/backend',
->>>>>>> 43eb8c69d99c79d7634875617f8fda9e08f6af89
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
