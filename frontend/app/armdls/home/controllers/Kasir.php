@@ -17,7 +17,7 @@ class Kasir extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
+		$config = array('server'            => 'http://localhost/backend',
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -41,7 +41,7 @@ class Kasir extends CI_Controller {
     public function index(){
         $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser, '','');
         $data = json_decode(json_encode($data), true);
-        $this->load->view('kasir/kasirmenu',$data);
+        $this->load->view('kasir/kasirmenuview',$data);
     }
 
 	public function wResep()
@@ -53,11 +53,8 @@ class Kasir extends CI_Controller {
                 $data = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
                                         .'&id='.$id, '','');
                 $data = json_decode(json_encode($data), true);
-                // $data['price'] = $data['ro_quantity']*$data['o_price'];
-                $this->load->view('kasir/denganresep',$data);
-                // $this->rest->debug();
-                // echo json_encode($data);
-
+                $this->load->view('kasir/withresepview',$data);
+                //$this->rest->debug();
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -72,7 +69,7 @@ class Kasir extends CI_Controller {
 					$data['message'] = $this->rest->debug();
 				}
 
-				$this->load->view('kasir/denganresep',$data);
+				$this->load->view('kasir/withresepview',$data);
                 break;
             default:
                 redirect('/');
@@ -84,11 +81,11 @@ class Kasir extends CI_Controller {
         switch ($request) {
             case "GET":
                 $id = $this->input->get('id');
-                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->$currentuser
+                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
                                         .'&id='.$id, '','');
                 $data = json_decode(json_encode($data), true);
-                // $this->load->view('kasir/tanparesep');
-                $this->rest->debug();
+                $this->load->view('kasir/woresepview');
+                //$this->rest->debug();
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -104,7 +101,7 @@ class Kasir extends CI_Controller {
 					$data['message'] = $this->rest->debug();
 				}
 
-				$this->load->view('kasir/tanparesep',$data);
+				$this->load->view('kasir/woresepview',$data);
                 break;
             default:
                 redirect('/');

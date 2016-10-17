@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Admin</title>
+  <title>E-Apotek | Kasir</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,13 +27,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>E</b>-Apotek</a>
+    <b>E</b>-Apotek
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Kasir</p>
+    <p class="login-box-msg">Selamat datang, Kasir</p>
 
     <div style="text-align: center">
+
+    <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
+      <i class="fa fa-sign-out"></i> Log out
+    </a>
         <table class="table">
     <thead>
       <tr>

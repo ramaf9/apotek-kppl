@@ -93,20 +93,28 @@
                   </td>
                 </tr>
               </table>
+
+
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
+              <ul class="pagination pagination-sm no-margin pull-left">
                 <li><a href="#">&laquo;</a></li>
                 <li><a href="#">1</a></li>
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
+              <div class="col-xs-6">
+              <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/admin/index'); ?>">Kembali</a>
             </div>
+            </div>
+
           </div>
+
           <!-- /.box -->
-    </div>
+          </div>
+
         <!-- /.col -->
       </div>
     </form>
