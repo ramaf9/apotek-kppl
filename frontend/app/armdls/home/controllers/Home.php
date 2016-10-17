@@ -96,6 +96,11 @@ class Home extends CI_Controller {
 		redirect('/');
 	}
 
+	public function view($halaman = 'index'){
+		$this->load->view('/'.$halaman);
+
+	}
+
 
 
   	/*function __encrip_password($password) {
