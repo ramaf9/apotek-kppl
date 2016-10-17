@@ -37,7 +37,7 @@
     <a class="btn btn-app" href="<?php echo base_url('home/admin/addUser'); ?>" align>
       <i class="fa fa-user-plus"></i> Tambah User
     </a>
-    <a class="btn btn-app">
+    <a class="btn btn-app" href="<?php echo base_url('home/admin/delUser'); ?>">
       <i class="fa fa-user-times"></i> Hapus User
     </a>
     <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">

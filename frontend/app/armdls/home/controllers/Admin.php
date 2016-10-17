@@ -69,7 +69,7 @@ class Admin extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
-                $this->load->view('admin/tambahuser');
+                $this->load->view('admin/deluserview');
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -85,7 +85,7 @@ class Admin extends CI_Controller {
 					$data['message'] = $this->rest->debug();
 				}
 
-				$this->load->view('admin/hapususer',$data);
+				$this->load->view('admin/deluserview',$data);
                 break;
             default:
                 redirect('/');
