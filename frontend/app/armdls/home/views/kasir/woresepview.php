@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Dengan Resep</title>
+  <title>E-Apotek | Tanpa Resep</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,16 +27,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>E</b>-Apotek</a>
+    <b>E</b>-Apotek
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Dengan Resep</p>
+    <p class="login-box-msg">Tanpa Resep</p>
 
     <form action="../../index2.html" method="post">
       <div class="form-group">
-        <label>Resep</label>
-          <textarea class="form-control" rows="3" placeholder="Masukkan resep disini"></textarea>
+        <label>Keluhan</label>
+          <textarea class="form-control" rows="3" placeholder="Masukkan keluhan disini"></textarea>
       </div>
       <div class="form-group">
         <label>Nomor Antrian</label>
@@ -44,10 +44,12 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
+          <a type="submit" class="btn btn-success btn-block btn-flat">Tambah</a>
         </div>
+
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
+          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/Kasir/index'); ?>">Kembali</a>
         </div>
         <!-- /.col -->
       </div>

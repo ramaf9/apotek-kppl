@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Tanpa Resep</title>
+  <title>E-Apotek | Kasir</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,28 +27,45 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>E</b>-Apotek</a>
+    <b>E</b>-Apotek
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Dengan Resep</p>
+    <p class="login-box-msg">Selamat datang, Kasir</p>
 
-    <form action="../../index2.html" method="post">
-      <div class="form-group">
-        <label>Keluhan</label>
-          <textarea class="form-control" rows="3" placeholder="Masukkan keluhan disini"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Nomor Antrian</label>
-          <input type="text" class="form-control" placeholder="Masukkan nomor antrian disini">
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
-        </div>
+    <div style="text-align: center">
+    <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
+      <i class="fa fa-sign-out"></i> Log out
+    </a>
+        <table class="table">
+    <thead>
+      <tr>
+        <th>No antrian</th>
+        <th>Nama pasien</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?php foreach($request_obat as $ro) {
+        ?>
+
+      <tr>
+        <td><?php echo $ro['ro_id'] ?></td>
+        <td><?php echo $ro['ro_pasien'] ?></td>
+        <td>
+            <a class="btn btn-app" align href="<?php echo base_url('home/kasir/wresep?id='.$ro['ro_id']); ?>">
+              <i class="fa fa-file-text-o"></i> Dengan Resep
+            </a>
+            <a class="btn btn-app" href="<?php echo base_url('home/kasir/woresep?id='.$ro['ro_id']); ?>">
+              <i class="fa fa-file-o"></i> Tanpa Resep
+            </a>
+        </td>
+      </tr>
+      <?php
+      }?>
+    </tbody>
+  </table>
+    </div>
         <!-- /.col -->
       </div>
     </form>
