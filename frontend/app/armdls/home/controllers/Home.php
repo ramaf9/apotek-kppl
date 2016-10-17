@@ -13,11 +13,7 @@ class Home extends CI_Controller {
 		// $this->load->spark('restclient/2.2.1');
 
 		// Load the library
-		$this->load->library('rest');
-
-		// Set config options (only 'server' is required to work)
-
-		$config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
+		$config = array('server'            => rest_url,
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -82,8 +78,9 @@ class Home extends CI_Controller {
 				// // echo $user->data->role;
 				if ($user['status']) {
 					$role = $user['data']['role'];
-					$this->redirectUser($role);
 					$this->session->set_userdata($user['data']);
+					$this->redirectUser($role);
+
 				}
 				else{
 					redirect('/');

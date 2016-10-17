@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kasir extends CI_Controller {
-
+    private $currentuser = "";
 	public function __construct()
 	{
 		parent::__construct();
@@ -31,6 +31,7 @@ class Kasir extends CI_Controller {
 		$this->rest->initialize($config);
         if ($this->session->userdata('logged_in') &&
             $this->session->userdata('role') == 3) {
+                $this->currentuser = $this->session->userdata('username');
 
 		}
         else{
@@ -38,8 +39,7 @@ class Kasir extends CI_Controller {
         }
 	}
     public function index(){
-        $currentuser = $this->session->userdata('username');
-        $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$currentuser, '','');
+        $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser, '','');
         $data = json_decode(json_encode($data), true);
         $this->load->view('kasir/kasirmenu',$data);
     }
@@ -49,13 +49,18 @@ class Kasir extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
-                $this->load->view('kasir/denganresep');
+                $id = $this->input->get('id');
+                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
+                                        .'&id='.$id, '','');
+                $data = json_decode(json_encode($data), true);
+                // $this->load->view('kasir/denganresep',$data);
+                $this->rest->debug();
                 break;
             case "POST":
 				$this->rest->format('application/json');
 				$params = $this->input->post(NULL,TRUE);
 				$currentuser = $this->session->userdata('username');
-				$user = $this->rest->post('user/admin/data?username='.$currentuser, $params,'');
+				$user = $this->rest->post('user/admin/data?username='.$this->currentuser, $params,'');
 
 				if (isset($user->message)) {
 					$data['message'] = $user->message;
@@ -75,13 +80,18 @@ class Kasir extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
-                $this->load->view('kasir/tanparesep');
+                $id = $this->input->get('id');
+                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->$currentuser
+                                        .'&id='.$id, '','');
+                $data = json_decode(json_encode($data), true);
+                // $this->load->view('kasir/tanparesep');
+                $this->rest->debug();
                 break;
             case "POST":
 				$this->rest->format('application/json');
 				$params = $this->input->post(NULL,TRUE);
 				$currentuser = $this->session->userdata('username');
-				$user = $this->rest->delete('user/admin/data?username='.$currentuser
+				$user = $this->rest->delete('user/admin/data?username='.$this->currentuser
 						.'&id='.$params['id'],'','');
 
 				if (isset($user->message)) {

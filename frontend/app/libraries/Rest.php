@@ -43,7 +43,7 @@ class REST
     protected $http_auth = null;
     protected $http_user = null;
     protected $http_pass = null;
-    
+
     protected $api_name  = 'X-API-KEY';
     protected $api_key   = null;
 
@@ -61,9 +61,9 @@ class REST
         /* Not using Sparks? You bloody well should be.
         | If you are going to be a stick in the mud then do it the old fashioned way
 */
-        
+
         $this->_ci->load->library('curl');
-        
+
         // Load the cURL spark which this is dependant on
         //$this->_ci->load->spark('curl/1.2.1');
 
@@ -94,12 +94,12 @@ class REST
         {
             $this->rest_server .= '/';
         }
-        
+
         isset($config['send_cookies']) && $this->send_cookies = $config['send_cookies'];
-        
+
         isset($config['api_name']) && $this->api_name = $config['api_name']; //echo $this->api_name;
         isset($config['api_key']) && $this->api_key = $config['api_key'];  //echo $this->api_key;
-        
+
         isset($config['http_auth']) && $this->http_auth = $config['http_auth']; //echo $this->http_auth;
         isset($config['http_user']) && $this->http_user = $config['http_user']; //echo $this->http_user;
         isset($config['http_pass']) && $this->http_pass = $config['http_pass']; // echo $this->http_pass;
@@ -109,6 +109,22 @@ class REST
         //echo $this->config->item('rest_realm');
         //$digest = $this->input->server('PHP_AUTH_USER');
         //print_r($digest);
+    }
+
+    public function ez_initialize()
+    {
+        $config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
+                        //'api_key'         => 'Setec_Astronomy'
+                        //'api_name'        => 'X-API-KEY'
+                        //'http_user'       => 'username',
+                        //'http_pass'       => 'password',
+                        //'http_auth'       => 'basic',
+                        //'ssl_verify_peer' => TRUE,
+                        //'ssl_cainfo'      => '/certs/cert.pem'
+                        );
+
+        // Run some setup
+        $this->initialize($config);
     }
 
     /**
@@ -140,7 +156,7 @@ class REST
     {
         //print_r($params);
         return $this->_call('post', $uri, $params, $format);
-        
+
     }
 
     /**
@@ -190,12 +206,12 @@ class REST
     {
        // echo $this->api_key;
         $this->api_key  = $key;
-        
+
         if ($name !== FALSE)
         {
             $this->api_name = $name;
         }
-        
+
     }
 
     /**
@@ -221,12 +237,12 @@ class REST
      * @access  public
      * @author  David Genelid
      * @version 1.0
-     */ 
+     */
     public function header($header)
     {
         $this->_ci->curl->http_header($header);
        // echo $this->_ci->curl->http_header($header);
-    }   
+    }
 
     /**
      * _call
@@ -267,13 +283,13 @@ class REST
            // echo "http_auth ".$this->http_auth." http_user ".$this->http_user." http_pass ".$this->http_pass;
             $this->_ci->curl->http_login($this->http_user, $this->hash, $this->http_auth);
         }
-        
+
         //echo 'hello';
         //  echo $this->api_key;
         // If we have an API Key, then use it
         if ($this->api_key != '')
         {
-            
+
             //echo $this->http_header($this->api_name, $this->api_key);
             $this->_ci->curl->http_header($this->api_name, $this->api_key);
             //$this->_ci->curl->http_header();
@@ -282,18 +298,18 @@ class REST
         // Send cookies with curl
         if ($this->send_cookies != '')
         {
-                
-            $this->_ci->curl->set_cookies( $_COOKIE );      
-        
+
+            $this->_ci->curl->set_cookies( $_COOKIE );
+
         }
-        
+
         // Set the Content-Type (contributed by https://github.com/eriklharper)
         $this->http_header('Content-type', $this->mime_type);
-        
+
 
         // We still want the response even if there is an error code over 400
         $this->_ci->curl->option('failonerror', FALSE);
-        
+
         // Call the correct method with parameters
         $this->_ci->curl->{$method}($params);
         //print_r($params);
@@ -412,7 +428,7 @@ class REST
      * @author  Phil Sturgeon
      * @version 1.0
      */
-    // 
+    //
     public function option($code, $value)
     {
         $this->_ci->curl->option($code, $value);
@@ -488,7 +504,7 @@ class REST
     /**
      * _csv
      *
-     * Format HTML for output.  This function is DODGY! Not perfect CSV support but works 
+     * Format HTML for output.  This function is DODGY! Not perfect CSV support but works
      * with my REST_Controller (https://github.com/philsturgeon/codeigniter-restserver)
      *
      * @access  public
@@ -535,7 +551,7 @@ class REST
      * _serialize
      *
      * Encode as Serialized array
-     * 
+     *
      * @access  public
      * @author  Phil Sturgeon
      * @version 1.0

@@ -50,10 +50,10 @@
         <td><?php echo $ro['ro_id'] ?></td>
         <td><?php echo $ro['ro_pasien'] ?></td>
         <td>
-            <a class="btn btn-app" align href="<?php echo base_url('home/kasir/wresep'); ?>">
+            <a class="btn btn-app" align href="<?php echo base_url('home/kasir/wresep?id='.$ro['ro_id']); ?>">
               <i class="fa fa-file-text-o"></i> Dengan Resep
             </a>
-            <a class="btn btn-app" href="<?php echo base_url('home/kasir/woresep'); ?>">
+            <a class="btn btn-app" href="<?php echo base_url('home/kasir/woresep?id='.$ro['ro_id']); ?>">
               <i class="fa fa-file-o"></i> Tanpa Resep
             </a>
         </td>
