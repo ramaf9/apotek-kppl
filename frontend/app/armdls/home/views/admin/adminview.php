@@ -27,21 +27,21 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>E</b>-Apotek</a>
+    <b>E</b>-Apotek
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Selamat Datang, Admin</p>
 
     <div style="text-align: center">
-    <a class="btn btn-app" href="<?php echo base_url('home/admin/adduser'); ?>" align>
+    <a class="btn btn-app" href="<?php echo base_url('home/admin/addUser'); ?>" align>
       <i class="fa fa-user-plus"></i> Tambah User
     </a>
     <a class="btn btn-app">
       <i class="fa fa-user-times"></i> Hapus User
     </a>
-    <a class="btn btn-app" href="home/logout">
-      <i class="fa fa-user-times"></i> Log out
+    <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
+      <i class="fa fa-sign-out"></i> Log out
     </a>
     </div>
         <!-- /.col -->

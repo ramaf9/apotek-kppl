@@ -25,7 +25,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+\<div class="login-box">
   <div class="login-logo">
     <a href="../../index2.html"><b>E</b>-Apotek</a>
   </div>
@@ -34,36 +34,12 @@
     <p class="login-box-msg">Kasir</p>
 
     <div style="text-align: center">
-        <table class="table">
-    <thead>
-      <tr>
-        <th>No antrian</th>
-        <th>Nama pasien</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php foreach($request_obat as $ro) {
-        ?>
-
-      <tr>
-        <td><?php echo $ro['ro_id'] ?></td>
-        <td><?php echo $ro['ro_pasien'] ?></td>
-        <td>
-            <a class="btn btn-app" align href="<?php echo base_url('home/kasir/wresep'); ?>">
-              <i class="fa fa-file-text-o"></i> Dengan Resep
-            </a>
-            <a class="btn btn-app" href="<?php echo base_url('home/kasir/woresep'); ?>">
-              <i class="fa fa-file-o"></i> Tanpa Resep
-            </a>
-        </td>
-      </tr>
-      <?php
-      }?>
-    </tbody>
-  </table>
-
-
+    <a class="btn btn-app" align>
+      <i class="fa fa-file-text-o"></i> Dengan Resep
+    </a>
+    <a class="btn btn-app">
+      <i class="fa fa-file-o"></i> Tanpa Resep
+    </a>
     </div>
         <!-- /.col -->
       </div>

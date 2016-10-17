@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Login Page</title>
+  <title>E-Apotek | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -31,34 +31,45 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Login</p>
+    <p class="login-box-msg">Tambah User</p>
 
-    <form method="post">
+    <form action="../../index2.html" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" placeholder="Username">
+        <input type="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password">
+        <input type="username" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="phonenumber" class="form-control" placeholder="No Telepon">
+        <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group">
+                  <label>Role</label>
+                  <select class="form-control">
+                    <option>Apoteker</option>
+                    <option>Pengadaan</option>
+                    <option>Kasir</option>
+                    <option>Pemilik</option>
+                  </select>
+                </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
+        <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
+          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/admin/index'); ?>">Kembali</a>
         </div>
         <!-- /.col -->
       </div>
     </form>
-
-    <a href="#">I forgot my password</a><br>
 
   </div>
   <!-- /.login-box-body -->
@@ -70,7 +81,7 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <!-- iCheck -->
-<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"ss></script>
 <script>
   $(function () {
     $('input').iCheck({

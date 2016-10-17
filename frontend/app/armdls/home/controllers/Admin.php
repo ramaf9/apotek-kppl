@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
+		$config = array('server'            => 'http://localhost/backend',
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -46,7 +46,7 @@ class Admin extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
-                $this->load->view('admin/tambahuser');
+                $this->load->view('admin/adduserview');
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -61,7 +61,7 @@ class Admin extends CI_Controller {
 					$data['message'] = $this->rest->debug();
 				}
 
-				$this->load->view('admin/tambahuser',$data);
+				$this->load->view('admin/adduserview',$data);
                 break;
             default:
                 redirect('/');

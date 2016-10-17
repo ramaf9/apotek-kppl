@@ -17,7 +17,7 @@ class Home extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => 'http://localhost/APOTEK-KPPL/backend',
+		$config = array('server'            => 'http://localhost/backend',
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -82,8 +82,9 @@ class Home extends CI_Controller {
 				// // echo $user->data->role;
 				if ($user['status']) {
 					$role = $user['data']['role'];
-					$this->redirectUser($role);
 					$this->session->set_userdata($user['data']);
+					$this->redirectUser($role);
+					
 				}
 				else{
 					redirect('/');
@@ -98,6 +99,7 @@ class Home extends CI_Controller {
 		redirect('/');
 	}
 
+	
 
   	/*function __encrip_password($password) {
         return md5($password);
