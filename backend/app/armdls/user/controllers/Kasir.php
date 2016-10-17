@@ -19,6 +19,7 @@ class Kasir extends User{
     }
     // Retrieve all requested obat
     public function request_obat_get(){
+        $id = $this->input->get('id');
         $data = $this->Request_obat_model->read($id);
         if ($data) {
             // send all requested obat response

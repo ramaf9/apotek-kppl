@@ -31,26 +31,31 @@ class Home extends CI_Controller {
 		$this->rest->initialize($config);
 
 	}
+	private function redirectUser($role){
+		if ($role == 1) {
+			# code...
+		}
+		else if ($role == 2){
+			redirect('home/admin');
+		}
+		else if ($role == 3){
+			redirect('home/kasir');
+		}
+		else if ($role == 4){
 
+		}
+		else if ($role == 5){
+			redirect('home/pengadaan');
+		}
+
+		// echo json_encode($this->session->userdata('logged_in'));
+		// $this->session->sess_destroy();
+	}
 	public function index()
 	{
 		if ($this->session->userdata('logged_in')) {
 			$role = $this->session->userdata('role');
-			if ($role == 1) {
-				# code...
-			}
-			else if ($role == 2){
-				$this->load->view('admin/adminview');
-			}
-			else if ($role == 3){
-				$this->load->view('kasir/kasirmenu');
-			}
-			else if ($role == 4){
-
-			}
-			else if ($role == 5){
-				$this->load->view('pengadaan/pengadaanview');
-			}
+			$this->redirectUser($role);
 
 		}
 		else{
@@ -77,25 +82,8 @@ class Home extends CI_Controller {
 				// // echo $user->data->role;
 				if ($user['status']) {
 					$role = $user['data']['role'];
-					if ($role == 1) {
-						# code...
-					}
-					else if ($role == 2){
-						$this->load->view('admin/adminview');
-					}
-					else if ($role == 3){
-						$this->load->view('kasir/kasirmenu');
-					}
-					else if ($role == 4){
-
-					}
-					else if ($role == 5){
-						$this->load->view('pengadaan/pengadaanview');
-					}
-
+					$this->redirectUser($role);
 					$this->session->set_userdata($user['data']);
-					// echo json_encode($this->session->userdata('logged_in'));
-					// $this->session->sess_destroy();
 				}
 				else{
 					redirect('/');

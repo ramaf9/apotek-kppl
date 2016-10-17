@@ -12,7 +12,10 @@ class Request_obat_model extends CI_Model{
     		$replace = "=$id";
     	}
     	// query get data $id data from database
-    	$query = $this->db->query("select * from request_obat where ro_id".$replace);
+        $query = $this->db->query("select * from request_obat
+                                   inner join obat
+                                   on request_obat.ro_obat=obat.o_id
+                                   where request_obat.ro_id".$replace);
     	// return $query as array
     	return $query->result_array();
     }
