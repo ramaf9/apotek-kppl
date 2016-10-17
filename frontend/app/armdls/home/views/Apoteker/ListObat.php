@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>List Obat</title>
-	<link rel="stylesheet" href="./w3.css">
-	<link rel="stylesheet" href="./w3-black.css">
+	<link rel="stylesheet" href="assets/bootstrap/css/w3.css">
+	<link rel="stylesheet" href="assets/bootstrap/css/w3-black.css">
 </head>
 <body>
 	<table class="w3-center" border=1 width=100% border=0>
