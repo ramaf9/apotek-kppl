@@ -27,51 +27,45 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>E</b>-Apotek</a>
+    <b>E</b>-Apotek
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Tambah User</p>
 
-    <form method="post">
-        <div class="form-group has-feedback">
-          <input type="username" class="form-control" placeholder="Name" name="name" required>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
+    <form action="../../index2.html" method="post">
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username" name="username" required>
+        <input type="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email" required>
+        <input type="username" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="phonenumber" class="form-control" placeholder="No Telepon" name="telp" required>
+        <input type="phonenumber" class="form-control" placeholder="No Telepon">
         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <input type="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group">
                   <label>Role</label>
-                  <select class="form-control" name="role">
-                    <option value="4">Apoteker</option>
-                    <option value="5">Pengadaan</option>
-                    <option value="3">Kasir</option>
-                    <option value="1">Pemilik</option>
+                  <select class="form-control">
+                    <option>Apoteker</option>
+                    <option>Pengadaan</option>
+                    <option>Kasir</option>
+                    <option>Pemilik</option>
                   </select>
                 </div>
       <div class="row">
         <div class="col-xs-8">
-            <?php if(isset($message)){
-                echo '<p style="color:green;">'.$message.'</p>';
-            } ?>
+        <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
+          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/admin/index'); ?>">Kembali</a>
         </div>
         <!-- /.col -->
       </div>

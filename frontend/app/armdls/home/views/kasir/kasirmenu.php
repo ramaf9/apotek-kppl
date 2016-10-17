@@ -25,7 +25,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+\<div class="login-box">
   <div class="login-logo">
     <a href="../../index2.html"><b>E</b>-Apotek</a>
   </div>
@@ -34,6 +34,7 @@
     <p class="login-box-msg">Kasir</p>
 
     <div style="text-align: center">
+<<<<<<< HEAD
         <table class="table">
     <thead>
       <tr>
@@ -64,6 +65,14 @@
   </table>
 
 
+=======
+    <a class="btn btn-app" align>
+      <i class="fa fa-file-text-o"></i> Dengan Resep
+    </a>
+    <a class="btn btn-app">
+      <i class="fa fa-file-o"></i> Tanpa Resep
+    </a>
+>>>>>>> 43eb8c69d99c79d7634875617f8fda9e08f6af89
     </div>
         <!-- /.col -->
       </div>

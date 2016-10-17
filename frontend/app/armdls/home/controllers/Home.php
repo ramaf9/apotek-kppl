@@ -13,7 +13,15 @@ class Home extends CI_Controller {
 		// $this->load->spark('restclient/2.2.1');
 
 		// Load the library
+<<<<<<< HEAD
 		$config = array('server'            => rest_url,
+=======
+		$this->load->library('rest');
+
+		// Set config options (only 'server' is required to work)
+
+		$config = array('server'            => 'http://localhost/backend',
+>>>>>>> 43eb8c69d99c79d7634875617f8fda9e08f6af89
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -80,7 +88,11 @@ class Home extends CI_Controller {
 					$role = $user['data']['role'];
 					$this->session->set_userdata($user['data']);
 					$this->redirectUser($role);
+<<<<<<< HEAD
 
+=======
+					
+>>>>>>> 43eb8c69d99c79d7634875617f8fda9e08f6af89
 				}
 				else{
 					redirect('/');
@@ -95,6 +107,7 @@ class Home extends CI_Controller {
 		redirect('/');
 	}
 
+	
 
   	/*function __encrip_password($password) {
         return md5($password);
