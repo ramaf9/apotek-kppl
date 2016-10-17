@@ -56,6 +56,31 @@
         <!-- /.col -->
       </div>
     </form>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama obat</th>
+        <th>Stock</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <?php foreach($obat as $ro) {
+        ?>
+      <tr>
+        <td><?php echo $ro['o_id'] ?></td>
+        <td><?php echo $ro['o_name'] ?></td>
+        <td><?php echo $ro['o_quantity']." ".$ro['o_unit'] ?></td>
+        <td>
+
+
+        </td>
+      </tr>
+      <?php
+      }?>
+    </tbody>
+  </table>
 
   </div>
   <!-- /.login-box-body -->

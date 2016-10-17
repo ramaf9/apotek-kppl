@@ -8,7 +8,7 @@ class Pengadaan extends User{
     	parent::__construct();
         $data=$this->session->userdata($this->input->get('username'));
         // 5 is code of pengadaan role
-        if ($data['role'] != 5) {
+        if (isset($data) && $data['role'] != 5) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
