@@ -35,7 +35,7 @@ class Kasir extends User{
     }
     // Send request obat to procurement
     public function payment_put(){
-        $data = $this->input->input_stream();
+        $data = $this->input->get();
 
         $data['quantity'] = '-'.$data['quantity'];
         $result = $this->Obat_model->update($data);
@@ -64,7 +64,7 @@ class Kasir extends User{
     			'status' => FALSE,
     			'message' => 'payment failed'
     		];
-    		$this->set_response($message, REST_Controller::HTTP_OK);
+    		$this->set_response($data, REST_Controller::HTTP_OK);
     	}
     }
 }

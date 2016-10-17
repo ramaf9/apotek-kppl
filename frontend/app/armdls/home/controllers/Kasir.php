@@ -17,7 +17,7 @@ class Kasir extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => 'http://localhost/backend',
+		$config = array('server'            => rest_url,
 		                //'api_key'         => 'Setec_Astronomy'
 		                //'api_name'        => 'X-API-KEY'
 		                //'http_user'       => 'username',
@@ -40,27 +40,34 @@ class Kasir extends CI_Controller {
 	}
     public function index(){
         $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser, '','');
-        $data = json_decode(json_encode($data), true);
+        $data['request_obat'] = json_decode(json_encode($data['request_obat']), true);
+        // echo json_encode($data);
+        // $this->rest->debug();
         $this->load->view('kasir/kasirmenuview',$data);
     }
 
 	public function wResep()
 	{
         $request = $this->input->server('REQUEST_METHOD');
+        $id = $this->input->get('id');
+        $data = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
+                                .'&id='.$id, '','');
+        $data = json_decode(json_encode($data[0]), true);
+        $data['price'] = $data['ro_quantity']*$data['o_price'];
         switch ($request) {
             case "GET":
-                $id = $this->input->get('id');
-                $data = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
-                                        .'&id='.$id, '','');
-                $data = json_decode(json_encode($data), true);
+                // echo json_encode($data[0]);
                 $this->load->view('kasir/withresepview',$data);
-                //$this->rest->debug();
+                // $this->rest->debug();
                 break;
             case "POST":
 				$this->rest->format('application/json');
 				$params = $this->input->post(NULL,TRUE);
 				$currentuser = $this->session->userdata('username');
-				$user = $this->rest->post('user/admin/data?username='.$this->currentuser, $params,'');
+                // echo json_encode($data);
+				$user = $this->rest->put('user/kasir/payment?username='.$this->currentuser
+                                        .'&quantity='.$data['ro_quantity'].'&ro_id='.$data['ro_id']
+                                        .'&o_id='.$data['o_id'].'', '','');
 
 				if (isset($user->message)) {
 					$data['message'] = $user->message;
@@ -70,6 +77,7 @@ class Kasir extends CI_Controller {
 				}
 
 				$this->load->view('kasir/withresepview',$data);
+                // $this->rest->debug();
                 break;
             default:
                 redirect('/');
