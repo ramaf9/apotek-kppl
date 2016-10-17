@@ -34,7 +34,6 @@
     <p class="login-box-msg">Kasir</p>
 
     <div style="text-align: center">
-<<<<<<< HEAD
         <table class="table">
     <thead>
       <tr>

@@ -36,11 +36,12 @@
     <form action="../../index2.html" method="post">
       <div class="form-group">
         <label>Resep</label>
-          <textarea class="form-control" rows="3" placeholder="Masukkan resep disini"></textarea>
+          <!-- <textarea class="form-control" rows="3" placeholder="Masukkan resep disini"></textarea> -->
+
       </div>
       <div class="form-group">
-        <label>Nomor Antrian</label>
-          <input type="text" class="form-control" placeholder="Masukkan nomor antrian disini">
+        <label>Harga</label>
+          <input type="text" class="form-control" placeholder="Masukkan nomor antrian disini" disabled value="<?php echo $ro_price ?>">
       </div>
       <div class="row">
         <div class="col-xs-8">

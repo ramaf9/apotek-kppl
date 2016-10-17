@@ -50,11 +50,14 @@ class Kasir extends CI_Controller {
         switch ($request) {
             case "GET":
                 $id = $this->input->get('id');
-                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
+                $data = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
                                         .'&id='.$id, '','');
                 $data = json_decode(json_encode($data), true);
-                // $this->load->view('kasir/denganresep',$data);
-                $this->rest->debug();
+                // $data['price'] = $data['ro_quantity']*$data['o_price'];
+                $this->load->view('kasir/denganresep',$data);
+                // $this->rest->debug();
+                // echo json_encode($data);
+
                 break;
             case "POST":
 				$this->rest->format('application/json');
