@@ -40,7 +40,7 @@ class Home extends CI_Controller {
 			redirect('home/kasir');
 		}
 		else if ($role == 4){
-
+			$this->load->view('owner/ownerview');
 		}
 		else if ($role == 5){
 			redirect('home/pengadaan');
