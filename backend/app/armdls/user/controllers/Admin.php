@@ -6,9 +6,10 @@ require_once 'User.php'; // rest_api library
 class Admin extends User{
     public function __construct() {
     	parent::__construct();
-        $data=$this->session->userdata($this->input->get('username'));
-        // 2 is code of admin role
-        if (isset($data) && $data['role'] != 2) {
+        $data=parent::$token;
+        $username = $this->input->get('username');
+        //2 is code of admin role
+        if (isset($data) && $data->role != 2 && $username == $data->username) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'

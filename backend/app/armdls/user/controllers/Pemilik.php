@@ -6,9 +6,10 @@ require_once 'User.php'; // rest_api library
 class Pemilik extends User{
     public function __construct() {
     	parent::__construct();
-        $data=$this->session->userdata($this->input->get('username'));
-        // 1 is code of pemilik role
-        if ($data['role'] != 1) {
+        $data=parent::$token;
+        $username = $this->input->get('username');
+        //1 is code of pemilik role
+        if (isset($data) && $data->role != 1 && $username == $data->username) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'

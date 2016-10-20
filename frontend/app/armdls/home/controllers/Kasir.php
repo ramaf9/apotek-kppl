@@ -15,23 +15,22 @@ class Kasir extends CI_Controller {
 		// Load the library
 		$this->load->library('rest');
 
-		// Set config options (only 'server' is required to work)
-
-		$config = array('server'            => rest_url,
-		                //'api_key'         => 'Setec_Astronomy'
-		                //'api_name'        => 'X-API-KEY'
-		                //'http_user'       => 'username',
-		                //'http_pass'       => 'password',
-		                //'http_auth'       => 'basic',
-		                //'ssl_verify_peer' => TRUE,
-		                //'ssl_cainfo'      => '/certs/cert.pem'
-		                );
 
 		// Run some setup
-		$this->rest->initialize($config);
+		
         if ($this->session->userdata('logged_in') &&
             $this->session->userdata('role') == 3) {
                 $this->currentuser = $this->session->userdata('username');
+                $config = array('server'            => rest_url,
+				                'api_key'         => 'Bearer '.$this->session->userdata['token'],
+				                'api_name'        => 'Authorization'
+				                //'http_user'       => 'username',
+				                //'http_pass'       => 'password',
+				                //'http_auth'       => 'basic',
+				                //'ssl_verify_peer' => TRUE,
+				                //'ssl_cainfo'      => '/certs/cert.pem'
+				                );
+                $this->rest->initialize($config);
 
 		}
         else{
@@ -83,33 +82,15 @@ class Kasir extends CI_Controller {
                 redirect('/');
         }
 	}
-	public function woResep()
+	public function cetakFaktur()
 	{
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
-                $id = $this->input->get('id');
-                $data['request_obat'] = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
-                                        .'&id='.$id, '','');
-                $data = json_decode(json_encode($data), true);
-                $this->load->view('kasir/woresepview');
-                //$this->rest->debug();
+
                 break;
             case "POST":
-				$this->rest->format('application/json');
-				$params = $this->input->post(NULL,TRUE);
-				$currentuser = $this->session->userdata('username');
-				$user = $this->rest->delete('user/admin/data?username='.$this->currentuser
-						.'&id='.$params['id'],'','');
 
-				if (isset($user->message)) {
-					$data['message'] = $user->message;
-				}
-				else{
-					$data['message'] = $this->rest->debug();
-				}
-
-				$this->load->view('kasir/woresepview',$data);
                 break;
             default:
                 redirect('/');

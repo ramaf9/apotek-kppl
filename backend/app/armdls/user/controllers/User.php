@@ -4,15 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . '/libraries/REST_Controller.php'; // rest_api library
 
 class User extends REST_Controller{
-	static protected $role=0;
+	static protected $token = "";
+
 	// Load model in constructor
 	public function __construct() {
 		parent::__construct();
+		$token = $this->input->get_request_header('Authorization', TRUE);
+		if ($token) {
+			$token = explode("Bearer ", $token);
+			User::$token = $this->jwt->decode($token[1],secret);
+		}
+		$token = NULL;
 		$this->load->model('User_model');
 	}
 	// Server's login method
 	public function login_post(){
-		// retrieve login data from post method
+		//retrieve login data from post method
 		$data = $this->input->post('input');
 		$username = $data['username'];
 		$password = $data['password'];
@@ -39,8 +46,10 @@ class User extends REST_Controller{
 			        'username'  => $data[0]['u_name'],
 			        'email'     => $data[0]['u_email'],
 					'role'		=> $data[0]['u_role'],
-			        'logged_in' => TRUE
+			        'logged_in' => TRUE,
 				);
+				$token = $this->jwt->encode($newdata,secret);
+				$newdata['token'] = $token;
 
 				$this->session->set_userdata($newdata['username'],$newdata);
 				// set success response
@@ -60,6 +69,7 @@ class User extends REST_Controller{
 			}
 		}
 		// send response
+		// $message = apache_request_headers();
 		$this->set_response($message, REST_Controller::HTTP_OK);
 
 	}

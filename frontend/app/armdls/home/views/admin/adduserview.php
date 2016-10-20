@@ -33,30 +33,30 @@
   <div class="login-box-body">
     <p class="login-box-msg">Tambah User</p>
 
-    <form action="../../index2.html" method="post">
+    <form method="post">
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username">
+        <input type="username" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Email">
+        <input type="email" name="email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="phonenumber" class="form-control" placeholder="No Telepon">
+        <input type="phonenumber" name="telp" class="form-control" placeholder="No Telepon">
         <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group">
                   <label>Role</label>
-                  <select class="form-control">
-                    <option>Apoteker</option>
-                    <option>Pengadaan</option>
-                    <option>Kasir</option>
-                    <option>Pemilik</option>
+                  <select name="role" class="form-control">
+                    <option value="2">Apoteker</option>
+                    <option value="5">Pengadaan</option>
+                    <option value="3">Kasir</option>
+                    <option value="1">Pemilik</option>
                   </select>
                 </div>
       <div class="row">

@@ -6,9 +6,10 @@ require_once 'User.php'; // rest_api library
 class Pengadaan extends User{
     public function __construct() {
     	parent::__construct();
-        $data=$this->session->userdata($this->input->get('username'));
-        // 5 is code of pengadaan role
-        if (isset($data) && $data['role'] != 5) {
+        $data=parent::$token;
+        $username = $this->input->get('username');
+        //5 is code of pengadaan role
+        if (isset($data) && $data->role != 5 && $username == $data->username) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'

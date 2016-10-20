@@ -6,9 +6,10 @@ require_once 'User.php'; // rest_api library
 class Kasir extends User{
     public function __construct() {
     	parent::__construct();
-        $data=$this->session->userdata($this->input->get('username'));
-        // 3 is Kasir role
-        if (isset($data) && $data['role'] != 3) {
+        $data=parent::$token;
+        $username = $this->input->get('username');
+        //3 is code of kasir role
+        if (isset($data) && $data->role != 3 && $username == $data->username) {
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'

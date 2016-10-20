@@ -47,6 +47,8 @@ class REST
     protected $api_name  = 'X-API-KEY';
     protected $api_key   = null;
 
+    protected $api_token = null;
+
     protected $ssl_verify_peer  = null;
     protected $ssl_cainfo       = null;
 

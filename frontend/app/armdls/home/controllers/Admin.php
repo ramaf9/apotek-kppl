@@ -14,20 +14,22 @@ class Admin extends CI_Controller {
 
 		// Set config options (only 'server' is required to work)
 
-		$config = array('server'            => rest_url,
-		                //'api_key'         => 'Setec_Astronomy'
-		                //'api_name'        => 'X-API-KEY'
-		                //'http_user'       => 'username',
-		                //'http_pass'       => 'password',
-		                //'http_auth'       => 'basic',
-		                //'ssl_verify_peer' => TRUE,
-		                //'ssl_cainfo'      => '/certs/cert.pem'
-		                );
+
 
 		// Run some setup
-		$this->rest->initialize($config);
+
         if ($this->session->userdata('logged_in') &&
             $this->session->userdata('role') == 2) {
+				$config = array('server'            => rest_url,
+				                'api_key'         => 'Bearer '.$this->session->userdata['token'],
+				                'api_name'        => 'Authorization'
+				                //'http_user'       => 'username',
+				                //'http_pass'       => 'password',
+				                //'http_auth'       => 'basic',
+				                //'ssl_verify_peer' => TRUE,
+				                //'ssl_cainfo'      => '/certs/cert.pem'
+				                );
+				$this->rest->initialize($config);
 
 		}
         else{
@@ -51,14 +53,15 @@ class Admin extends CI_Controller {
 				$currentuser = $this->session->userdata('username');
 				$user = $this->rest->post('user/admin/data?username='.$currentuser, $params,'');
 
-				if (isset($user->message)) {
-					$data['message'] = $user->message;
-				}
-				else{
-					$data['message'] = $this->rest->debug();
-				}
-
-				$this->load->view('admin/adduserview',$data);
+				// if (isset($user->message)) {
+				// 	$data['message'] = $user->message;
+				// }
+				// else{
+				// 	$data['message'] = $this->rest->debug();
+				// }
+				//
+				// $this->load->view('admin/adduserview',$data);
+				$this->rest->debug();
                 break;
             default:
                 redirect('/');

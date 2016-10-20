@@ -9,8 +9,6 @@ class Home extends CI_Controller {
 
 		$this->load->library('session');
     	$this->load->model('home_models');
-		    	// Load the rest client spark
-		// $this->load->spark('restclient/2.2.1');
 
 
 		// Set config options (only 'server' is required to work)
@@ -31,7 +29,7 @@ class Home extends CI_Controller {
 	}
 	private function redirectUser($role){
 		if ($role == 1) {
-			# code...
+			redirect('home/pemilik');
 		}
 		else if ($role == 2){
 			redirect('home/admin');
@@ -40,7 +38,7 @@ class Home extends CI_Controller {
 			redirect('home/kasir');
 		}
 		else if ($role == 4){
-
+			redirect('home/apoteker');
 		}
 		else if ($role == 5){
 			redirect('home/pengadaan');
