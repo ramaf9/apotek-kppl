@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Pengadaan</title>
+  <title>E-Apotek | Owner</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -31,58 +31,22 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Selamat datang, Bagian Pengadaan</p>
+    <p class="login-box-msg">Selamat Datang, Owner</p>
+
     <div style="text-align: center">
+    <a class="btn btn-app" href="<?php echo base_url('owner/harianview'); ?>" align>
+      <i class="fa fa-bar-chart"></i> Laporan Harian
+    </a>
+    <a class="btn btn-app" href="<?php echo base_url('home/admin/delUser'); ?>">
+      <i class="fa fa-calendar"></i> Laporan Bulanan
+    </a>
     <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
       <i class="fa fa-sign-out"></i> Log out
     </a>
-    <form action="../../index2.html" method="post">
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Kode Obat">
-      </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Nama Obat">
-      </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Harga Jual">
-      </div>
-      <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Satuan">
-      </div>
-      <div class="row">
-
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <a type="submit" class="btn btn-success btn-block btn-flat">Kembali</a>
-        </div>
+    </div>
         <!-- /.col -->
       </div>
     </form>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Nama obat</th>
-        <th>Stock</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php foreach($obat as $ro) {
-        ?>
-      <tr>
-        <td><?php echo $ro['o_id'] ?></td>
-        <td><?php echo $ro['o_name'] ?></td>
-        <td><?php echo $ro['o_quantity']." ".$ro['o_unit'] ?></td>
-        <td>
-
-
-        </td>
-      </tr>
-      <?php
-      }?>
-    </tbody>
-  </table>
 
   </div>
   <!-- /.login-box-body -->

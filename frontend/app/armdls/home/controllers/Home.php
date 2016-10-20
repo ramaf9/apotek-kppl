@@ -38,7 +38,11 @@ class Home extends CI_Controller {
 			redirect('home/kasir');
 		}
 		else if ($role == 4){
+<<<<<<< HEAD
 			redirect('home/apoteker');
+=======
+			$this->load->view('owner/ownerview');
+>>>>>>> c072ec7640e297e72db4f75d121ded8b557ecbaf
 		}
 		else if ($role == 5){
 			redirect('home/pengadaan');
