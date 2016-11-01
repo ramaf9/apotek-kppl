@@ -1,8 +1,4 @@
-</div>
-      </div>
-    </div>
-    <!-- Footer -->
-    <!-- Javascripts -->
+
     <script src="<?php echo base_url();?>assets/js/ga.js"></script>
     <script src="<?php echo base_url();?>assets/js/jquery.js" type="text/javascript"></script>
     <script src="<?php echo base_url();?>assets/js/jquery-ui.js" type="text/javascript"></script>

@@ -99,6 +99,12 @@ class Home extends CI_Controller {
 		$this->load->view('/'.$halaman);
 
 	}
+	public function debug(){
+
+		$this->load->view('header');
+		$this->load->view('dashboard');
+		$this->load->view('footer');
+	}
 
 
 
