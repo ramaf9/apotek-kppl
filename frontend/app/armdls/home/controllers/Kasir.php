@@ -42,7 +42,9 @@ class Kasir extends CI_Controller {
         $data['request_obat'] = json_decode(json_encode($data['request_obat']), true);
         // echo json_encode($data);
         // $this->rest->debug();
+        $this->load->view('template/header');
         $this->load->view('kasir/kasirmenuview',$data);
+        $this->load->view('template/footer');
     }
 
 	public function wResep()
@@ -56,7 +58,9 @@ class Kasir extends CI_Controller {
         switch ($request) {
             case "GET":
                 // echo json_encode($data[0]);
+                $this->load->view('template/header');
                 $this->load->view('kasir/withresepview',$data);
+                $this->load->view('template/footer');
                 // $this->rest->debug();
                 break;
             case "POST":
@@ -74,8 +78,9 @@ class Kasir extends CI_Controller {
 				else{
 					$data['message'] = $this->rest->debug();
 				}
-
+                $this->load->view('template/header');
 				$this->load->view('kasir/withresepview',$data);
+                $this->load->view('template/footer');
                 // $this->rest->debug();
                 break;
             default:

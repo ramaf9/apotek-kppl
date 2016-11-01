@@ -37,7 +37,9 @@ class Admin extends CI_Controller {
         }
 	}
 	public function index(){
+		$this->load->view('template/header');
 		$this->load->view('admin/adminview');
+		$this->load->view('template/footer');
 	}
 
 	public function addUser()
@@ -45,7 +47,9 @@ class Admin extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
+            	$this->load->view('template/header');
                 $this->load->view('admin/adduserview');
+                $this->load->view('template/footer');
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -72,7 +76,9 @@ class Admin extends CI_Controller {
         $request = $this->input->server('REQUEST_METHOD');
         switch ($request) {
             case "GET":
+            	$this->load->view('template/header');
                 $this->load->view('admin/deluserview');
+                $this->load->view('template/footer');
                 break;
             case "POST":
 				$this->rest->format('application/json');
@@ -87,8 +93,9 @@ class Admin extends CI_Controller {
 				else{
 					$data['message'] = $this->rest->debug();
 				}
-
+				$this->load->view('template/header');
 				$this->load->view('admin/deluserview',$data);
+				$this->load->view('template/footer');
                 break;
             default:
                 redirect('/');
