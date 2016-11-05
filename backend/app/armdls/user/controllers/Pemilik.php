@@ -9,14 +9,17 @@ class Pemilik extends User{
         $data=parent::$token;
         $username = $this->input->get('username');
         //1 is code of pemilik role
-        if (isset($data) && $data->role != 1 && $username == $data->username) {
+        if (isset($data) && $data != "" && $data->role == 1 && $username == $data->username) {
+            $this->load->model('obat/Obat_model');
+            $this->load->model('obat/Laporan_model');
+        }
+        else{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
-        $this->load->model('obat/Obat_model');
-        $this->load->model('obat/Laporan_model');
+
     }
     // Retrieve all requested obat
     public function laporan_ro_get(){

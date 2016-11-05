@@ -9,14 +9,17 @@ class Pengadaan extends User{
         $data=parent::$token;
         $username = $this->input->get('username');
         //5 is code of pengadaan role
-        if (isset($data) && $data->role != 5 && $username == $data->username) {
+        if (isset($data) && $data != "" && $data->role == 5 && $username == $data->username) {
+            $this->load->model('obat/Obat_model');
+            $this->load->model('obat/Pengadaan_obat_model');
+        }
+        else{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
-        $this->load->model('obat/Obat_model');
-        $this->load->model('obat/Pengadaan_obat_model');
+
     }
     // Retrieve all obat method
     public function obat_get($id_param = NULL){
@@ -71,7 +74,7 @@ class Pengadaan extends User{
     // Server's Delete Method
     public function obat_delete(){
     	// retrieve data from current third segment
-    	$id = $this->uri->segment(3);
+    	$id = $this->input->get('id');
     	// check if $id is null
     	if($id===NULL){
     		// send failed response

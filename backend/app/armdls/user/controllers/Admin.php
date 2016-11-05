@@ -9,13 +9,15 @@ class Admin extends User{
         $data=parent::$token;
         $username = $this->input->get('username');
         //2 is code of admin role
-        if (isset($data) && $data->role != 2 && $username == $data->username) {
+        if (isset($data) && $data != "" && $data->role == 2 && $username == $data->username) {
+            $this->load->model('User_model');
+        }
+        else{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
-        $this->load->model('User_model');
 
     }
     // Server's Get Method
@@ -89,13 +91,26 @@ class Admin extends User{
     			insert new user to database
 
     		*/
-    		$this->User_model->insert($data);
-    		// send success response
-    		$message = [
-    			'status' => TRUE,
-    			'message' => $data['u_username'].' created'
-    		];
-    		$this->set_response($message, REST_Controller::HTTP_CREATED);
+            if ($this->User_model->check_username($data['u_username'])) {
+                $this->User_model->insert($data);
+
+                // send success response
+        		$message = [
+        			'status' => TRUE,
+        			'message' => $data['u_username'].' created'
+        		];
+        		$this->set_response($message, REST_Controller::HTTP_CREATED);
+            }
+            else{
+                // send error response
+        		$message = [
+        			'status' => FALSE,
+        			'message' => $data['u_username'].' failed to create'
+        		];
+        		$this->set_response($message, REST_Controller::HTTP_OK);
+            }
+
+
     	}
     	// Server's Put Method
     	public function data_put(){
@@ -149,7 +164,10 @@ class Admin extends User{
     		if ($data)
     		{
     			// send success response
-    			$this->set_response($data, REST_Controller::HTTP_OK);
+    			$this->set_response([
+    				'status' => TRUE,
+    				'error' => 'Delete success'
+    			], REST_Controller::HTTP_OK);
     		}
     		else
     		{

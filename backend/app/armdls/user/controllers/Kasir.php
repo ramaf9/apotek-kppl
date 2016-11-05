@@ -9,14 +9,17 @@ class Kasir extends User{
         $data=parent::$token;
         $username = $this->input->get('username');
         //3 is code of kasir role
-        if (isset($data) && $data->role != 3 && $username == $data->username) {
+        if (isset($data) && $data != "" && $data->role == 3 && $username == $data->username) {
+            $this->load->model('obat/Obat_model');
+            $this->load->model('obat/Request_obat_model');
+        }
+        else{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
-        $this->load->model('obat/Obat_model');
-        $this->load->model('obat/Request_obat_model');
+
     }
     // Retrieve all requested obat
     public function request_obat_get(){

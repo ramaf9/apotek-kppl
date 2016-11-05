@@ -9,8 +9,8 @@ class User extends REST_Controller{
 	// Load model in constructor
 	public function __construct() {
 		parent::__construct();
-		$token = $this->input->get_request_header('Authorization', TRUE);
-		if ($token) {
+		$token = $this->input->get_request_header('authorization', TRUE);
+		if ($token != null) {
 			$token = explode("Bearer ", $token);
 			User::$token = $this->jwt->decode($token[1],secret);
 		}

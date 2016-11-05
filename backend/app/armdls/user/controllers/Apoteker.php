@@ -9,14 +9,16 @@ class Apoteker extends User{
         $data=parent::$token;
         $username = $this->input->get('username');
         //4 is code of apoteker role
-        if (isset($data) && $data->role != 4 && $username == $data->username) {
+        if (isset($data) && $data != "" && $data->role == 4 && $username == $data->username) {
+            $this->load->model('obat/Obat_model');
+            $this->load->model('obat/Request_obat_model');
+        }
+        else{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
-        $this->load->model('obat/Obat_model');
-        $this->load->model('obat/Request_obat_model');
     }
     // Retrieve all obat method
     public function obat_get($id_param = NULL){

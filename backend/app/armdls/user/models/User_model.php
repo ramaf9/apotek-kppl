@@ -49,7 +49,7 @@ public function check_username($username){
 		$replace = "" ;
 	}
 	else{
-		$replace = "=$username";
+		$replace = "='$username'";
 	}
 	// query get $username from database
 	$query = $this->db->query("select * from user where u_username".$replace);
