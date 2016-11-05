@@ -39,7 +39,7 @@ class Kasir extends User{
     }
     // Send request obat to procurement
     public function payment_put(){
-        $data = $this->input->get();
+        $data = $this->input->input_stream();
 
         $data['quantity'] = '-'.$data['quantity'];
         $result = $this->Obat_model->update($data);

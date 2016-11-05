@@ -56,7 +56,7 @@ class Pengadaan extends User{
     		'o_name' => $this->input->post('name'),
     		'o_price' => $this->input->post('price'),
     		'o_unit' => $this->input->post('unit'),
-    		'u_quantity' => $this->input->post('quantity')
+    		'o_quantity' => $this->input->post('quantity')
     	);
     	/*
     		call insert method from Obat_model that will get
@@ -93,7 +93,10 @@ class Pengadaan extends User{
     	if ($data)
     	{
     		// send success response
-    		$this->set_response($data, REST_Controller::HTTP_OK);
+    		$this->set_response([
+    			'status' => TRUE,
+    			'error' => 'Delete obat success'
+    		], REST_Controller::HTTP_OK);
     	}
     	else
     	{
@@ -106,11 +109,12 @@ class Pengadaan extends User{
     }
     // Server method to post pengadaan_obat
     public function pengadaan_obat_post(){
+        $data = $this->input->input_stream();
     	// set $data array from post method
     	$data = array(
     		'po_obat' => $data['obat'],
     		'po_quantity' => $data['quantity'],
-    		'po_vendor' => $data['pasien'],
+    		'po_vendor' => $data['vendor'],
             'po_status' => 0,
             'po_date' => date("Y/m/d")
     	);
@@ -123,7 +127,7 @@ class Pengadaan extends User{
     	// send success response
     	$message = [
     		'status' => TRUE,
-    		'message' => $data['o_name'].' created'
+    		'message' => 'PO created'
     	];
     	$this->set_response($message, REST_Controller::HTTP_CREATED);
     }
