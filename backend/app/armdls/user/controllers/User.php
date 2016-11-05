@@ -43,7 +43,7 @@ class User extends REST_Controller{
 			// check if $data return true
 			if ($data) {
 				$newdata = array(
-			        'username'  => $data[0]['u_name'],
+			        'username'  => $data[0]['u_username'],
 			        'email'     => $data[0]['u_email'],
 					'role'		=> $data[0]['u_role'],
 			        'logged_in' => TRUE,

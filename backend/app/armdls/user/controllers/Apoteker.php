@@ -15,7 +15,7 @@ class Apoteker extends User{
         }
         else{
             $this->response([
-                'status' => FALSE,
+                'status' => $data,
                 'error' => 'No authorization'
             ], REST_Controller::HTTP_FORBIDDEN);
         }
@@ -77,7 +77,7 @@ class Apoteker extends User{
             'ro_date' => date("Y/m/d")
     	);
         // call Obat_model method to insert $content
-        $this->Request_obat_model->insert($data);
+        $this->Request_obat_model->insert($content);
     	// send success response
     	$message = [
     		'status' => TRUE,
