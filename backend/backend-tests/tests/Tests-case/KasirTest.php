@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
  * Simple test class for showing how to test with Guzzle
@@ -25,10 +24,6 @@ class KasirTest extends GuzzleTestCase
     {
         $this->_client = new ServiceClient();
         $this->token = "";
-        // $this->setMockBasePath('./mock/responses');
-        // $this->setMockResponse($this->_client, array('response1'));
-        //
-        // $this->getServer()->enqueue(array());
     }
 
     public function testLoginRequests()
@@ -42,9 +37,7 @@ class KasirTest extends GuzzleTestCase
         $request->getQuery()->set('view', 'recent_open_or_overdue');
         $response = $request->send();
         $body = $response->json();
-        // $header = $response->getHeaders();
-        // $body = $response->getBody();
-        // echo json_encode($response);
+
         $this->token = 'Bearer '.$body['data']['token'];
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($body['status']);
@@ -93,5 +86,20 @@ class KasirTest extends GuzzleTestCase
          $this->assertEquals(201,$response->getStatusCode());
 
          return $data;
+     }
+
+     public function testLogoutRequests()
+     {
+         // The following request will get the mock response from the plugin in FIFO order
+         $data = [
+             'username' => $this->id
+         ];
+         $request = $this->_client->post($this->url.'logout');
+         $response = $request->send();
+         $body = $response->json();
+
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertTrue($body['status']);
+         return $this->token;
      }
 }

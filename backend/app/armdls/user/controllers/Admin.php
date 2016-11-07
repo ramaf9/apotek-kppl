@@ -80,7 +80,7 @@ class Admin extends User{
     		// set $data array from post method
     		$data = array(
     			'u_username' => $this->input->post('username'),
-    			'u_password' => $this->input->post('password'),
+    			'u_password' => md5($this->input->post('password')),
     			'u_name' => $this->input->post('name'),
     			'u_email' => $this->input->post('email'),
     			'u_telp' => $this->input->post('telp'),

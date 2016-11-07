@@ -23,6 +23,9 @@ class User extends REST_Controller{
 		$data = $this->input->post('input');
 		$username = $data['username'];
 		$password = $data['password'];
+
+		// hash password
+		$password = md5($password);
 		// initialize empty array
 		$message = [];
 		// check if $username or $password is null
@@ -69,7 +72,6 @@ class User extends REST_Controller{
 			}
 		}
 		// send response
-		// $message = apache_request_headers();
 		$this->set_response($message, REST_Controller::HTTP_OK);
 
 	}

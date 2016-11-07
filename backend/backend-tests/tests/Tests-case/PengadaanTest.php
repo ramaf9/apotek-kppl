@@ -25,10 +25,6 @@ class PengadaanTest extends GuzzleTestCase
     {
         $this->_client = new ServiceClient();
         $this->token = "";
-        // $this->setMockBasePath('./mock/responses');
-        // $this->setMockResponse($this->_client, array('response1'));
-        //
-        // $this->getServer()->enqueue(array());
     }
 
     public function testLoginRequests()
@@ -42,9 +38,7 @@ class PengadaanTest extends GuzzleTestCase
         $request->getQuery()->set('view', 'recent_open_or_overdue');
         $response = $request->send();
         $body = $response->json();
-        // $header = $response->getHeaders();
-        // $body = $response->getBody();
-        // echo json_encode($response);
+
         $this->token = 'Bearer '.$body['data']['token'];
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($body['status']);
@@ -167,5 +161,20 @@ class PengadaanTest extends GuzzleTestCase
         $this->assertTrue($body['status']);
         $this->assertEquals(200,$response->getStatusCode());
 
+    }
+
+    public function testLogoutRequests()
+    {
+        // The following request will get the mock response from the plugin in FIFO order
+        $data = [
+            'username' => $this->id
+        ];
+        $request = $this->_client->post($this->url.'logout');
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertTrue($body['status']);
+        return $this->token;
     }
 }
