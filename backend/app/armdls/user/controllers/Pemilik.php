@@ -17,7 +17,7 @@ class Pemilik extends User{
             $this->response([
                 'status' => FALSE,
                 'error' => 'No authorization'
-            ], REST_Controller::HTTP_FORBIDDEN);
+            ], REST_Controller::HTTP_OK);
         }
 
     }

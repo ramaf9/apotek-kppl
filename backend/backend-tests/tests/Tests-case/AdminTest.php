@@ -25,7 +25,7 @@ class AdminTest extends GuzzleTestCase
         $this->token = "";
     }
 
-    public function testLoginRequests()
+    public function testAdminLogin()
     {
         // The following request will get the mock response from the plugin in FIFO order
         $data = [
@@ -44,7 +44,7 @@ class AdminTest extends GuzzleTestCase
     }
 
     /**
-     * @depends testLoginRequests
+     * @depends testAdminLogin
      */
 
     public function testCreateUserAnon($token){
@@ -122,7 +122,74 @@ class AdminTest extends GuzzleTestCase
         $this->assertTrue($body['status']);
         $this->assertEquals(200,$response->getStatusCode());
 
+        return $data;
+
     }
+
+    /**
+     * @depends testAdminLogin
+     */
+
+    public function testAccessApotekerForbidden($token){
+
+        $request = $this->_client->get($this->url.'apoteker?username='.$this->id);
+        $request->addHeader('authorization', $token);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testAdminLogin
+     */
+
+    public function testAccessKasirForbidden($token){
+
+        $request = $this->_client->get($this->url.'kasir?username='.$this->id);
+        $request->addHeader('authorization', $token);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testAdminLogin
+     */
+
+    public function testAccessPengadaanForbidden($token){
+
+        $request = $this->_client->get($this->url.'pengadaan?username='.$this->id);
+        $request->addHeader('authorization', $token);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testAdminLogin
+     */
+
+    public function testAccessPemilikForbidden($token){
+
+        $request = $this->_client->get($this->url.'pemilik?username='.$this->id);
+        $request->addHeader('authorization', $token);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
 
     public function testLogoutRequests()
     {
@@ -136,6 +203,6 @@ class AdminTest extends GuzzleTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($body['status']);
-        return $this->token;
+
     }
 }

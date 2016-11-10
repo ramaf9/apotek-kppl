@@ -26,7 +26,7 @@ class KasirTest extends GuzzleTestCase
         $this->token = "";
     }
 
-    public function testLoginRequests()
+    public function testKasirLogin()
     {
         // The following request will get the mock response from the plugin in FIFO order
         $data = [
@@ -49,7 +49,7 @@ class KasirTest extends GuzzleTestCase
     }
 
     /**
-     * @depends testLoginRequests
+     * @depends testKasirLogin
      */
 
      public function testGetRequestObatList($data){
@@ -87,6 +87,71 @@ class KasirTest extends GuzzleTestCase
 
          return $data;
      }
+
+     /**
+      * @depends testKasirLogin
+      */
+
+     public function testAccessApotekerForbidden($token){
+
+         $request = $this->_client->get($this->url.'apoteker?username='.$this->id);
+         $request->addHeader('authorization', $token['token']);
+         $response = $request->send();
+         $body = $response->json();
+
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertFalse($body['status']);
+         $this->assertNotNull($body);
+     }
+
+     /**
+      * @depends testKasirLogin
+      */
+
+     public function testAccessAdminForbidden($token){
+
+         $request = $this->_client->get($this->url.'admin?username='.$this->id);
+         $request->addHeader('authorization', $token['token']);
+         $response = $request->send();
+         $body = $response->json();
+
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertFalse($body['status']);
+         $this->assertNotNull($body);
+     }
+
+     /**
+      * @depends testKasirLogin
+      */
+
+     public function testAccessPengadaanForbidden($token){
+
+         $request = $this->_client->get($this->url.'pengadaan?username='.$this->id);
+         $request->addHeader('authorization', $token['token']);
+         $response = $request->send();
+         $body = $response->json();
+
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertFalse($body['status']);
+         $this->assertNotNull($body);
+     }
+
+     /**
+      * @depends testKasirLogin
+      */
+
+     public function testAccessPemilikForbidden($token){
+
+         $request = $this->_client->get($this->url.'pemilik?username='.$this->id);
+         $request->addHeader('authorization', $token['token']);
+         $response = $request->send();
+         $body = $response->json();
+
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertFalse($body['status']);
+         $this->assertNotNull($body);
+     }
+
 
      public function testLogoutRequests()
      {
