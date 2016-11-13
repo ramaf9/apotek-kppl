@@ -26,7 +26,7 @@ class ApotekerTest extends GuzzleTestCase
         $this->token = "";
     }
 
-    public function testLoginRequests()
+    public function testApotekerLogin()
     {
         // The following request will get the mock response from the plugin in FIFO order
         $data = [
@@ -50,7 +50,7 @@ class ApotekerTest extends GuzzleTestCase
 
 
     /**
-     * @depends testLoginRequests
+     * @depends testApotekerLogin
      */
 
     public function testGetObatList($data){
@@ -103,6 +103,71 @@ class ApotekerTest extends GuzzleTestCase
 
         return $data;
     }
+
+    /**
+     * @depends testApotekerLogin
+     */
+
+    public function testAccessAdminForbidden($token){
+
+        $request = $this->_client->get($this->url.'admin?username='.$this->id);
+        $request->addHeader('authorization', $token['token']);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testApotekerLogin
+     */
+
+    public function testAccessKasirForbidden($token){
+
+        $request = $this->_client->get($this->url.'kasir?username='.$this->id);
+        $request->addHeader('authorization', $token['token']);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testApotekerLogin
+     */
+
+    public function testAccessPengadaanForbidden($token){
+
+        $request = $this->_client->get($this->url.'pengadaan?username='.$this->id);
+        $request->addHeader('authorization', $token['token']);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
+    /**
+     * @depends testApotekerLogin
+     */
+
+    public function testAccessPemilikForbidden($token){
+
+        $request = $this->_client->get($this->url.'pemilik?username='.$this->id);
+        $request->addHeader('authorization', $token['token']);
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+        $this->assertNotNull($body);
+    }
+
 
     public function testLogoutRequests()
     {

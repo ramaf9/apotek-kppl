@@ -15,9 +15,9 @@ class Apoteker extends User{
         }
         else{
             $this->response([
-                'status' => $data,
+                'status' => FALSE,
                 'error' => 'No authorization'
-            ], REST_Controller::HTTP_FORBIDDEN);
+            ], REST_Controller::HTTP_OK);
         }
     }
     // Retrieve all obat method
