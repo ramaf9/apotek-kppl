@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php echo validation_errors(); ?>
+
+<?php echo form_open('Apoteker/create'); ?>
 <html>
 <head>
 	<title>Tambah Obat</title>
@@ -8,22 +10,26 @@
 </head>
 <body>
 	<!--<form method="post" action="(action dari input obat menjadi form))">-->
+	<?php
 	<div text align="center">
 		<h2>Tambah Obat</h2>
 	</div>
 		
 	<table width=100% border=1 class="table-data">
 		<tr>
+			<td>ID Obat</td>
+			<td ><input type="text" name="Id" size="30"></td></tr>
+
 			<td>Nama Obat</td>
 			<td ><input type="text" name="Obat" size="30"></td></tr>
 
 			<td >Kategori Obat</td>
 				<td >
-					<select name="kat">
+					<select name="Kategori">
 						<option value="">Kode Obat</option>
-						<optgroup label="Obat Kategori">
-							<option value="Obat Luar">Ol (Obat Luar)</option>
-							<option value="Obat Dalam">OD (Obat Dalam)</option>
+						<optgroup label="Obat unit">
+							<option value="Botol">Botol </option>
+							<option value="Pil">Pil </option>
 						</optgroup>
 					</select>
 				</td>
@@ -42,3 +48,4 @@
 </body>
 </html>
 
+<?php echo form_close(''); ?>

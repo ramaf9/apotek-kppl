@@ -31,16 +31,39 @@ class Apoteker extends CI_Controller {
         else{
             redirect('/');
         }
+
+        $this->load->model('Apoteker_models');
 	}
 	public function index(){
-		$this->load->view('apoteker/listobat');
+		$data['Apoteker'] = $this->Apoteker_models->get_obat;
+		$this->load->view('view/login', $data);
+		echo 'test';
 	}
 
-	public function request_obat()
+	public function create()
 	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('Id', 'Id', 'required');
+		$this->form_validation->set_rules('obat', 'obat', 'required');
+		$this->form_validation->set_rules('kategori', 'kategori', 'required');
+		$this->form_validation->set_rules('stock', 'stock', 'required');
+
+		if($this->form_validation->run(); == FALSE){
+
+			$this->load->view('Apoteker/formInputObat');
+		}
+
+		else{
+			$this->Apoteker_models->set_obat;
+			redirect('Apoteker');
+		}
+
+		
 
 	}
-	public function obat()
+	public function delete_obat()
 	{
 
 	}

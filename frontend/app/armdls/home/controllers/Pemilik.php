@@ -33,7 +33,7 @@ class Pemilik extends CI_Controller {
         }
 	}
 	public function index(){
-		$this->load->view('owner/ownerview');
+		$this->load->view('Manager/index');
 	}
 
 

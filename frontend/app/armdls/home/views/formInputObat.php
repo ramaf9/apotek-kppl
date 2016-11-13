@@ -2,8 +2,7 @@
 <html>
 <head>
 	<title>Tambah Obat</title>
-	<link rel="stylesheet" href="assets/bootstrap/css/w3.css">
-	<link rel="stylesheet" href="assets/bootstrap/css/w3-black.css">
+	<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
 </head>
 </head>
 <body>

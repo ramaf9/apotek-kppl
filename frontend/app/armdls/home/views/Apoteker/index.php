@@ -1,32 +1,54 @@
-<?php
-get_header();
-?>
-<div class="row-fluid">
-<ul class="thumbnails">
-
-
-<li class="span4">
-<div class="thumbnail">                 
-  <div class="caption">
-    <h3>Penjualan</h3>
-    <p>Penjualan</p>
-    <p><a href="<?=base_url('apotik/penjualan');?>" class="btn btn-primary">Masuk</a> </p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<bodyclass="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+  <b>E</b>-Apotek
   </div>
-</div>
-</li>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Selamat datang, Apoteker</p>
+     <div style="text-align: center">
 
-<li class="span4">
-<div class="thumbnail">                 
-  <div class="caption">
-    <h3>Return Penjualan</h3>
-    <p>Return Penjualan</p>
-    <p><a href="<?=base_url('apotik/return');?>" class="btn btn-primary">Masuk</a> </p>
+    <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
+      <i class="fa fa-sign-out"></i> Log out
+    </a>
+    <a class="btn btn-app" href="<?php echo base_url('Home/formInputObat'); ?>">
+      Input Obat 
+    </a>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama Obat</th>
+        <th>Unit Obat</th>
+        <th>Jumlah</th>
+      </tr>
+    </thead>
+     <tbody>
+        <?php foreach($obat as $o) {
+        ?>
+      <tr>
+        <td><?php echo $o['o_id'] ?></td>
+        <td><?php echo $o['o_name'] ?></td>
+        <td><?php echo $o['o_unit'] ?></td>
+        <td><?php echo $o['o_quantity'] ?></td>
+       </tr>
+      <?php
+      }?>
+      </tbody>
+  </table>
+    </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
   </div>
+  <!-- /.login-box-body -->
 </div>
-</li>
-
-</ul>
-</div>
-<?php
-get_footer();
-?>
+<!-- /.login-box -->
+</body>
+</html>>
