@@ -64,7 +64,7 @@ class PemilikTest extends GuzzleTestCase
      }
 
      /**
-      * @depends testLoginRequests
+      * @depends testGetLaporanPenjualanList
       */
 
      public function testGetLaporanPembelianList($data){
