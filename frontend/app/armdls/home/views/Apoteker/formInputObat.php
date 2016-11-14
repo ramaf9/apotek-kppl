@@ -1,51 +1,45 @@
-<?php echo validation_errors(); ?>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <b>E</b>-Apotek
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Tambah Obat</p>
 
-<?php echo form_open('Apoteker/create'); ?>
-<html>
-<head>
-	<title>Tambah Obat</title>
-	<link rel="stylesheet" href="assets/bootstrap/css/w3.css">
-	<link rel="stylesheet" href="assets/bootstrap/css/w3-black.css">
-</head>
-</head>
-<body>
-	<!--<form method="post" action="(action dari input obat menjadi form))">-->
-	<?php
-	<div text align="center">
-		<h2>Tambah Obat</h2>
-	</div>
-		
-	<table width=100% border=1 class="table-data">
-		<tr>
-			<td>ID Obat</td>
-			<td ><input type="text" name="Id" size="30"></td></tr>
+    <form method="post">
+      <div class="form-group has-feedback">
+        <input type="id" name="id" class="form-control" placeholder="ID">
+        <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="name" name="name" class="form-control" placeholder="Nama Obat">
+        <span class="glyphicon glyphicon-glass form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="quantity" name="quantity" class="form-control" placeholder="Kuantitas Obat">
+        <span class="glyphicon glyphicon-plus form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+                  <label>Jenis</label>
+                  <select name="role" class="form-control">
+                    <option value="BOTOL">Botol</option>
+                    <option value="PIL">Pil</option>
+                  </select>
+                </div>
+      <div class="row">
+        <div class="col-xs-8">
+        <button type="submit" class="btn btn-success btn-block btn-flat">Tambah</button>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/Apoteker/index'); ?>">Kembali</a>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
-			<td>Nama Obat</td>
-			<td ><input type="text" name="Obat" size="30"></td></tr>
-
-			<td >Kategori Obat</td>
-				<td >
-					<select name="Kategori">
-						<option value="">Kode Obat</option>
-						<optgroup label="Obat unit">
-							<option value="Botol">Botol </option>
-							<option value="Pil">Pil </option>
-						</optgroup>
-					</select>
-				</td>
-			
-			<tr><td class="pinggir-data">Stock Obat</td>
-			<td class="pinggir-data"><input type="text" name="stock" size="15"></td></tr>
-
-			<tr><td colspan="2" align="center" class="head-data">
-			<input type="submit" value="Input">
-			</td></tr>
-	
-		</tr>
-	
-	</table>
-	</form>
-</body>
-</html>
-
-<?php echo form_close(''); ?>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
