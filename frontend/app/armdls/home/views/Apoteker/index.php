@@ -16,7 +16,7 @@
     <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
       <i class="fa fa-sign-out"></i> Log out
     </a>
-    <a class="btn btn-app" href="<?php echo base_url('Home/Apoteker/create'); ?>">
+    <a class="btn btn-app" href="<?php echo base_url('Home/formInputObat'); ?>">
       Input Obat 
     </a>
     <table class="table">
