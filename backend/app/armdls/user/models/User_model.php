@@ -31,12 +31,15 @@ public function delete($id){
 // Update Query
 public function update($data){
 	// set $id from $data array
+	if (!isset($data['u_id'])||empty($data['u_id'])) {
+		return FALSE;
+	}
 	$id= $data['u_id'];
 	// query update $id data from database
 	$this->db->where('u_id',$id);
 	$query = $this->db->update('user',$data);
 	// check if query return true
-	if ($query) {
+	if ($this->db->affected_rows() > 0) {
 		return TRUE;
 	}
 	else{

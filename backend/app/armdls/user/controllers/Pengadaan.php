@@ -63,13 +63,23 @@ class Pengadaan extends User{
     		insert new user to database
 
     	*/
-    	$this->Obat_model->insert($data);
-    	// send success response
-    	$message = [
-    		'status' => TRUE,
-    		'message' => $data['o_name'].' created'
-    	];
-    	$this->set_response($message, REST_Controller::HTTP_CREATED);
+        if (count($data) < 4) {
+            $message = [
+            'status' => FALSE,
+            'message' => 'Incomplete data'
+            ];
+            $this->set_response($message, REST_Controller::HTTP_CREATED);
+        }
+        else {
+            $this->Obat_model->insert($data);
+            // send success response
+            $message = [
+                'status' => TRUE,
+                'message' => $data['o_name'].' created'
+            ];
+            $this->set_response($message, REST_Controller::HTTP_CREATED);
+        }    
+    	
     }
     // Server's Delete Method
     public function obat_delete(){
@@ -148,6 +158,13 @@ class Pengadaan extends User{
     }
     public function pengadaan_confirm_put(){
         $data = $this->input->input_stream();
+        if (!isset($data['quantity']) || !isset($data['po_id'])) {
+            $message = [
+            'status' => FALSE,
+            'message' => 'Incomplete data'
+            ];
+            $this->set_response($message, REST_Controller::HTTP_CREATED);
+        }
         $data['quantity'] = '+'.$data['quantity'];
         $result = $this->Obat_model->update($data);
 

@@ -17,7 +17,7 @@ use Guzzle\Tests\GuzzleTestCase,
 class PengadaanTest extends GuzzleTestCase
 {
     protected $_client;
-    protected $url = 'http://localhost/APOTEK-KPPL/backend/user/';
+    protected $url = 'http://localhost/apotekkppl/backend/user/';
     protected $token;
     protected $id = 'rama3';
 

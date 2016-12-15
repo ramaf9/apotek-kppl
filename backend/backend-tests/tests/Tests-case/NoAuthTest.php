@@ -15,7 +15,7 @@ use Guzzle\Tests\GuzzleTestCase,
 class NoAuthTest extends GuzzleTestCase
 {
     protected $_client;
-    protected $url = 'http://localhost/APOTEK-KPPL/backend/user/';
+    protected $url = 'http://localhost/apotekkppl/backend/user/';
     protected $token;
     protected $id = 'rama';
 
@@ -23,6 +23,36 @@ class NoAuthTest extends GuzzleTestCase
     {
         $this->_client = new ServiceClient();
         $this->token = "";
+    }
+
+    public function testEmptyLogin()
+    {
+        // The following request will get the mock response from the plugin in FIFO order
+        $data = [
+            'username' => '',
+            'password' => ''
+        ];
+        $request = $this->_client->post($this->url.'login', array(), array('input'=>$data));
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
+    }
+
+    public function testEmptyPasswordLogin()
+    {
+        // The following request will get the mock response from the plugin in FIFO order
+        $data = [
+            'username' => 'LOWL',
+            'password' => ''
+        ];
+        $request = $this->_client->post($this->url.'login', array(), array('input'=>$data));
+        $response = $request->send();
+        $body = $response->json();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertFalse($body['status']);
     }
 
     public function testFalseLogin()

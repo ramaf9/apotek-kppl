@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests-case" tests="60" assertions="162" failures="0" errors="0" time="6.155534">
+    <testsuite name="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" tests="15" assertions="43" failures="0" errors="0" time="1.735713">
+      <testcase name="testAdminLogin" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="29" assertions="3" time="0.143319"/>
+      <testcase name="testCreateUserAnon" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="52" assertions="2" time="0.166542"/>
+      <testcase name="testGetAllUser" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="79" assertions="3" time="0.084042"/>
+      <testcase name="testGetUserAnon" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="98" assertions="3" time="0.082193"/>
+      <testcase name="testGetUserX" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="117" assertions="3" time="0.094228"/>
+      <testcase name="testChangeAnonEmail" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="137" assertions="3" time="0.251852"/>
+      <testcase name="testBannedAnon" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="156" assertions="3" time="0.139405"/>
+      <testcase name="testBannedAnonWithNoId" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="173" assertions="3" time="0.091436"/>
+      <testcase name="testBannedAnonWithRandomId" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="190" assertions="3" time="0.087838">
+        <system-out>HTTP/1.1 200 OK&#13;
+Date: Fri, 09 Dec 2016 16:39:07 GMT&#13;
+Server: Apache/2.4.18 (Win32) OpenSSL/1.0.2e PHP/7.0.4&#13;
+X-Powered-By: PHP/7.0.4&#13;
+Set-Cookie: ci_session=c4cfd68a5091aca8c00c1fcd5b59268c22744304; expires=Fri, 09-Dec-2016 18:39:07 GMT; Max-Age=7200; path=/; HttpOnly&#13;
+Expires: Thu, 19 Nov 1981 08:52:00 GMT&#13;
+Cache-Control: no-store, no-cache, must-revalidate&#13;
+Pragma: no-cache&#13;
+Content-Length: 54&#13;
+Content-Type: application/json; charset=utf-8&#13;
+&#13;
+{"status":false,"message":"No data with specified id"}</system-out>
+      </testcase>
+      <testcase name="testDeleteAnon" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="208" assertions="3" time="0.154975"/>
+      <testcase name="testAccessApotekerForbidden" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="228" assertions="3" time="0.089605"/>
+      <testcase name="testAccessKasirForbidden" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="244" assertions="3" time="0.092079"/>
+      <testcase name="testAccessPengadaanForbidden" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="260" assertions="3" time="0.090384"/>
+      <testcase name="testAccessPemilikForbidden" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="276" assertions="3" time="0.090320"/>
+      <testcase name="testLogoutRequests" class="Testcase\AdminTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\AdminTest.php" line="289" assertions="2" time="0.077495"/>
+    </testsuite>
+    <testsuite name="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" tests="9" assertions="23" failures="0" errors="0" time="0.835521">
+      <testcase name="testApotekerLogin" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="29" assertions="3" time="0.084471"/>
+      <testcase name="testGetObatList" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="56" assertions="2" time="0.093271"/>
+      <testcase name="testCreateRequestObat" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="73" assertions="2" time="0.133803"/>
+      <testcase name="testGetRequestObatList" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="94" assertions="2" time="0.085374"/>
+      <testcase name="testAccessAdminForbidden" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="111" assertions="3" time="0.079651"/>
+      <testcase name="testAccessKasirForbidden" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="127" assertions="3" time="0.079883"/>
+      <testcase name="testAccessPengadaanForbidden" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="143" assertions="3" time="0.080713"/>
+      <testcase name="testAccessPemilikForbidden" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="159" assertions="3" time="0.110995"/>
+      <testcase name="testLogoutRequests" class="Testcase\ApotekerTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\ApotekerTest.php" line="172" assertions="2" time="0.087360"/>
+    </testsuite>
+    <testsuite name="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" tests="8" assertions="22" failures="0" errors="0" time="0.829921">
+      <testcase name="testKasirLogin" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="29" assertions="3" time="0.084101"/>
+      <testcase name="testGetRequestObatList" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="55" assertions="2" time="0.096500"/>
+      <testcase name="testConfirmUpdatePanadolStock" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="74" assertions="3" time="0.228693"/>
+      <testcase name="testAccessApotekerForbidden" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="95" assertions="3" time="0.079653"/>
+      <testcase name="testAccessAdminForbidden" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="111" assertions="3" time="0.081302"/>
+      <testcase name="testAccessPengadaanForbidden" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="127" assertions="3" time="0.091226"/>
+      <testcase name="testAccessPemilikForbidden" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="143" assertions="3" time="0.090856"/>
+      <testcase name="testLogoutRequests" class="Testcase\KasirTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\KasirTest.php" line="156" assertions="2" time="0.077590"/>
+    </testsuite>
+    <testsuite name="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" tests="8" assertions="21" failures="0" errors="0" time="0.705926">
+      <testcase name="testEmptyLogin" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="28" assertions="2" time="0.090724"/>
+      <testcase name="testEmptyPasswordLogin" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="43" assertions="2" time="0.080265"/>
+      <testcase name="testFalseLogin" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="58" assertions="2" time="0.091638"/>
+      <testcase name="testAccessAdminForbidden" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="77" assertions="3" time="0.109634"/>
+      <testcase name="testAccessApotekerForbidden" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="92" assertions="3" time="0.078909"/>
+      <testcase name="testAccessKasirForbidden" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="107" assertions="3" time="0.088796"/>
+      <testcase name="testAccessPengadaanForbidden" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="122" assertions="3" time="0.077889"/>
+      <testcase name="testAccessPemilikForbidden" class="Testcase\NoAuthTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\NoAuthTest.php" line="137" assertions="3" time="0.088071"/>
+    </testsuite>
+    <testsuite name="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" tests="8" assertions="21" failures="0" errors="0" time="0.695768">
+      <testcase name="testPemilikLogin" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="29" assertions="3" time="0.093181"/>
+      <testcase name="testGetLaporanPenjualanList" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="55" assertions="2" time="0.085970"/>
+      <testcase name="testGetLaporanPembelianList" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="70" assertions="2" time="0.093554"/>
+      <testcase name="testAccessApotekerForbidden" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="85" assertions="3" time="0.080658"/>
+      <testcase name="testAccessKasirForbidden" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="101" assertions="3" time="0.092304"/>
+      <testcase name="testAccessPengadaanForbidden" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="117" assertions="3" time="0.091022"/>
+      <testcase name="testAccessAdminForbidden" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="133" assertions="3" time="0.079986"/>
+      <testcase name="testLogoutRequests" class="Testcase\PemilikTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PemilikTest.php" line="145" assertions="2" time="0.079093"/>
+    </testsuite>
+    <testsuite name="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" tests="12" assertions="32" failures="0" errors="0" time="1.352684">
+      <testcase name="testPengadaanLogin" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="30" assertions="3" time="0.085668"/>
+      <testcase name="testCreateObatPanadol" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="53" assertions="2" time="0.225435"/>
+      <testcase name="testGetObatList" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="76" assertions="2" time="0.085304"/>
+      <testcase name="testUpdatePanadolStock" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="93" assertions="3" time="0.144549"/>
+      <testcase name="testGetPengadaanObat" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="114" assertions="2" time="0.084081"/>
+      <testcase name="testConfirmUpdatePanadolStock" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="133" assertions="3" time="0.164928"/>
+      <testcase name="testDeletePanadol" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="154" assertions="3" time="0.138048"/>
+      <testcase name="testAccessApotekerForbidden" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="170" assertions="3" time="0.089628"/>
+      <testcase name="testAccessKasirForbidden" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="186" assertions="3" time="0.083666"/>
+      <testcase name="testAccessAdminForbidden" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="202" assertions="3" time="0.091128"/>
+      <testcase name="testAccessPemilikForbidden" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="218" assertions="3" time="0.081061"/>
+      <testcase name="testLogoutRequests" class="Testcase\PengadaanTest" file="C:\xampp\htdocs\apotekkppl\backend\backend-tests\tests\Tests-case\PengadaanTest.php" line="230" assertions="2" time="0.079188"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

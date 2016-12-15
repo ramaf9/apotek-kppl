@@ -44,7 +44,7 @@ class User extends REST_Controller{
 			*/
 			$data = $this->User_model->check_password($username,$password);
 			// check if $data return true
-			if ($data) {
+			if ($data && $data[0]['u_status'] === "available") {
 				$newdata = array(
 			        'username'  => $data[0]['u_username'],
 			        'email'     => $data[0]['u_email'],
@@ -62,6 +62,13 @@ class User extends REST_Controller{
 				];
 				$message['data'] = $newdata;
 				// array_push($message,$newdata);
+			}
+			else if($data[0]['u_status'] == "banned"){
+				$message = [
+					'status' => FALSE,
+					'message' => 'Sorry your account has been banned'
+				];
+
 			}
 			else{
 				// set failed response

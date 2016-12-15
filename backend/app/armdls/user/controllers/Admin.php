@@ -72,12 +72,13 @@ class Admin extends User{
     			$this->set_response([
     				'status' => FALSE,
     				'error' => 'Record could not be found'
-    			], REST_Controller::HTTP_NOT_FOUND);
+    			], REST_Controller::HTTP_OK);
     		}
     	}
     	// Server's Post Method
     	public function data_post(){
     		// set $data array from post method
+            
     		$data = array(
     			'u_username' => $this->input->post('username'),
     			'u_password' => md5($this->input->post('password')),
@@ -86,6 +87,13 @@ class Admin extends User{
     			'u_telp' => $this->input->post('telp'),
     			'u_role' => $this->input->post('role')
     		);
+            if (count($data) < 6) {
+                $message = [
+                'status' => FALSE,
+                'message' => 'Incomplete data'
+                ];
+                $this->set_response($message, REST_Controller::HTTP_CREATED);
+            }
     		/*
     			call insert method from user_model that will get
     			insert new user to database
@@ -113,9 +121,9 @@ class Admin extends User{
 
     	}
     	// Server's Put Method
-    	public function data_put(){
+    	private function data_update($data){
     		// retrieve data from stream
-    		$data = $this->input->input_stream();
+    		// $data = $this->input->input_stream();
     		/*
     			call update method from user_model that will update
     			$id user data from database
@@ -129,19 +137,51 @@ class Admin extends User{
     				'status' => TRUE,
     				'message' => 'update success'
     			];
-    			$this->set_response($message, REST_Controller::HTTP_CREATED);
+    			$this->set_response($message, REST_Controller::HTTP_OK);
     		}
     		else{
     			// send success response
     			$message = [
     				'status' => FALSE,
-    				'message' => 'update failed'
+    				'message' => 'No data with specified id'
     			];
     			$this->set_response($message, REST_Controller::HTTP_OK);
     		}
 
 
     	}
+
+        public function change_email_put($id=NULL){
+            $data['u_email'] = $this->input->input_stream('u_email');
+            $data['u_id'] = $id;
+            if (!empty($data['u_email']) && $data['u_id'] != NULL) {
+               $this->data_update($data);
+            }
+            else{
+                $message = [
+                    'status' => FALSE,
+                    'message' => 'No email or ID found'
+                ];
+                $this->set_response($message, REST_Controller::HTTP_OK);
+            }
+            
+        }
+
+        public function banned_user_put($id=NULL){
+            $data['u_status'] = "banned";
+            $data['u_id'] = $id;
+            if (!empty($data['u_status']) && $data['u_id'] != NULL) {
+               $this->data_update($data);
+            }
+            else{
+                $message = [
+                    'status' => FALSE,
+                    'message' => 'No ID found'
+                ];
+                $this->set_response($message, REST_Controller::HTTP_OK);
+            }
+            
+        }
     	// Server's Delete Method
     	public function data_delete(){
     		// retrieve data from current third segment

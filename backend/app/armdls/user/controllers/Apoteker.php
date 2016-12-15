@@ -69,6 +69,13 @@ class Apoteker extends User{
     public function request_obat_post(){
         $data = $this->input->post('input');
         // initialize $content with key same as column name
+        if (!isset($data['obat']) || !isset($data['quantity']) || !isset($data['pasien'])) {
+            $message = [
+            'status' => FALSE,
+            'message' => 'Incomplete data'
+            ];
+            $this->set_response($message, REST_Controller::HTTP_CREATED);
+        }
         $content = array(
     		'ro_obat' => $data['obat'],
     		'ro_quantity' => $data['quantity'],

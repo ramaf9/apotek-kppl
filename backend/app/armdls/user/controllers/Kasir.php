@@ -40,7 +40,13 @@ class Kasir extends User{
     // Send request obat to procurement
     public function payment_put(){
         $data = $this->input->input_stream();
-
+        if (!isset($data['quantity']) || !isset($data['ro_id'])) {
+            $message = [
+            'status' => FALSE,
+            'message' => 'Incomplete data'
+            ];
+            $this->set_response($message, REST_Controller::HTTP_CREATED);
+        }
         $data['quantity'] = '-'.$data['quantity'];
         $result = $this->Obat_model->update($data);
 
