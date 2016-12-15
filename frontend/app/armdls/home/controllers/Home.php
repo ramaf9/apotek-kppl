@@ -44,9 +44,6 @@ class Home extends CI_Controller {
 		else if ($role == 5){
 			redirect('home/pengadaan');
 		}
-
-		// echo json_encode($this->session->userdata('logged_in'));
-		// $this->session->sess_destroy();
 	}
 	public function index()
 	{
@@ -64,26 +61,18 @@ class Home extends CI_Controller {
 		   {
 		   		$this->rest->format('application/json');
 				$params['input'] = $this->input->post(NULL,TRUE);
-				// $params = $this->input->post('input');
-				// $password = $this->input->post('password');
-				// $params['username'] = $username;
-				// $params['password'] = $password;
-				// $params['username'] = $params['name'];
-				// $asd = $this->input->post('username');
-				// echo json_encode($params);
 				$user = $this->rest->post('user/login', $params,'');
 				$user = json_decode(json_encode($user), true);
-				// $this->rest->debug();
-				// // $user = json_decode(json_encode($user));
-				// // $user = json_decode($user);
-				// // echo $user->data->role;
 				if ($user['status']) {
 					$role = $user['data']['role'];
 					$this->session->set_userdata($user['data']);
 					$this->redirectUser($role);
 				}
 				else{
-					redirect('/');
+					$message = "User/password salah";
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					//redirect('/');
+					$this->load->view('login');
 				}
 		   }
 
@@ -105,12 +94,5 @@ class Home extends CI_Controller {
 		$this->load->view('dashboard');
 		$this->load->view('footer');
 	}
-
-
-
-  	/*function __encrip_password($password) {
-        return md5($password);
-    }*/
-
 
 }

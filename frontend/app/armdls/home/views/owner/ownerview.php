@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>E-Apotek | Login Page</title>
+  <title>E-Apotek | Owner</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -31,29 +31,19 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Login</p>
+    <p class="login-box-msg">Selamat Datang, Owner</p>
 
-    <form method="post">
-      <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" required placeholder="Username">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" required placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
-        </div>
+    <div style="text-align: center">
+    <a class="btn btn-app" href="<?php echo base_url('owner/harianview'); ?>" align>
+      <i class="fa fa-bar-chart"></i> Laporan Harian
+    </a>
+    <a class="btn btn-app" href="<?php echo base_url('home/admin/delUser'); ?>">
+      <i class="fa fa-calendar"></i> Laporan Bulanan
+    </a>
+    <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
+      <i class="fa fa-sign-out"></i> Log out
+    </a>
+    </div>
         <!-- /.col -->
       </div>
     </form>
@@ -68,7 +58,7 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <!-- iCheck -->
-<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/plugins/iCheck/icheck.min.js'); ?>"ss></script>
 <script>
   $(function () {
     $('input').iCheck({
