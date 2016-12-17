@@ -29,20 +29,19 @@ class Home extends CI_Controller {
 	}
 	private function redirectUser($role){
 		if ($role == 1) {
-			redirect('home/pemilik');
+			redirect('pemilik');
 		}
 		else if ($role == 2){
-			redirect('home/admin');
+			redirect('admin');
 		}
 		else if ($role == 3){
-			redirect('home/kasir');
+			redirect('kasir');
 		}
 		else if ($role == 4){
-			redirect('home/apoteker');
-
+			redirect('apoteker');
 		}
 		else if ($role == 5){
-			redirect('home/pengadaan');
+			redirect('pengadaan');
 		}
 	}
 	public function index()
@@ -81,7 +80,7 @@ class Home extends CI_Controller {
 	}
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('/');
+		redirect('');
 	}
 
 	public function view($halaman = 'index'){

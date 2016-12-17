@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
             $this->session->userdata('role') == 2) {
 				$config = array('server'            => rest_url,
 				                'api_key'         => 'Bearer '.$this->session->userdata['token'],
-				                'api_name'        => 'Authorization'
+				                'api_name'        => 'authorization'
 				                //'http_user'       => 'username',
 				                //'http_pass'       => 'password',
 				                //'http_auth'       => 'basic',
@@ -63,44 +63,49 @@ class Admin extends CI_Controller {
 				// else{
 				// 	$data['message'] = $this->rest->debug();
 				// }
-				//
+				
 				// $this->load->view('admin/adduserview',$data);
-				$this->rest->debug();
-                break;
-            default:
-                redirect('/');
-        }
-	}
-	public function delUser()
-	{
-        $request = $this->input->server('REQUEST_METHOD');
-        switch ($request) {
-            case "GET":
-            	$this->load->view('template/header');
-                $this->load->view('admin/deluserview');
-                $this->load->view('template/footer');
-                break;
-            case "POST":
-				$this->rest->format('application/json');
-				$params = $this->input->post(NULL,TRUE);
-				$currentuser = $this->session->userdata('username');
-				$user = $this->rest->delete('user/admin/data?username='.$currentuser
-						.'&id='.$params['id'],'','');
-
-				if (isset($user->message)) {
-					$data['message'] = $user->message;
-				}
-				else{
-					$data['message'] = $this->rest->debug();
-				}
+				//$this->rest->debug();
 				$this->load->view('template/header');
-				$this->load->view('admin/deluserview',$data);
+				$this->load->view('admin/successview');
 				$this->load->view('template/footer');
                 break;
             default:
                 redirect('/');
         }
 	}
+
+	
+	// public function delUser()
+	// {
+ //        $request = $this->input->server('REQUEST_METHOD');
+ //        switch ($request) {
+ //            case "GET":
+ //            	$this->load->view('template/header');
+ //                $this->load->view('admin/deluserview');
+ //                $this->load->view('template/footer');
+ //                break;
+ //            case "POST":
+	// 			$this->rest->format('application/json');
+	// 			$params = $this->input->post(NULL,TRUE);
+	// 			$currentuser = $this->session->userdata('username');
+	// 			$user = $this->rest->delete('user/admin/data?username='.$currentuser
+	// 					.'&id='.$params['id'],'','');
+
+	// 			// if (isset($user->message)) {
+	// 			// 	$data['message'] = $user->message;
+	// 			// }
+	// 			// else{
+	// 			// 	$data['message'] = $this->rest->debug();
+	// 			// }
+	// 			$this->load->view('template/header');
+	// 			$this->load->view('admin/deluserview',$data);
+	// 			$this->load->view('template/footer');
+ //                break;
+ //            default:
+ //                redirect('/');
+ //        }
+	// }
 
 
   	/*function __encrip_password($password) {

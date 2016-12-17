@@ -13,7 +13,7 @@ class Kasir extends CI_Controller {
 		// $this->load->spark('restclient/2.2.1');
 
 		// Load the library
-		$this->load->library('rest');
+		//$this->load->library('rest');
 
 
 		// Run some setup
@@ -23,7 +23,7 @@ class Kasir extends CI_Controller {
                 $this->currentuser = $this->session->userdata('username');
                 $config = array('server'            => rest_url,
 				                'api_key'         => 'Bearer '.$this->session->userdata['token'],
-				                'api_name'        => 'Authorization'
+				                'api_name'        => 'authorization'
 				                //'http_user'       => 'username',
 				                //'http_pass'       => 'password',
 				                //'http_auth'       => 'basic',
@@ -43,7 +43,7 @@ class Kasir extends CI_Controller {
         // echo json_encode($data);
         // $this->rest->debug();
         $this->load->view('template/header');
-        $this->load->view('kasir/kasirmenuview',$data);
+        $this->load->view('kasir/kasirview',$data);
         $this->load->view('template/footer');
     }
 
@@ -87,20 +87,20 @@ class Kasir extends CI_Controller {
                 redirect('/');
         }
 	}
-	public function cetakFaktur()
-	{
-        $request = $this->input->server('REQUEST_METHOD');
-        switch ($request) {
-            case "GET":
+	// public function cetakFaktur()
+	// {
+ //        $request = $this->input->server('REQUEST_METHOD');
+ //        switch ($request) {
+ //            case "GET":
 
-                break;
-            case "POST":
+ //                break;
+ //            case "POST":
 
-                break;
-            default:
-                redirect('/');
-        }
-	}
+ //                break;
+ //            default:
+ //                redirect('/');
+ //        }
+	// }
 
 
   	/*function __encrip_password($password) {

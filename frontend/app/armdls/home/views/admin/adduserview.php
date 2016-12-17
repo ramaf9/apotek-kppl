@@ -9,6 +9,10 @@
 
     <form method="post">
       <div class="form-group has-feedback">
+        <input type="name" name="name" class="form-control" placeholder="Name">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
         <input type="username" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
@@ -39,7 +43,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('home/admin/index'); ?>">Kembali</a>
+          <a type="submit" class="btn btn-success btn-block btn-flat" href="<?php echo base_url('admin/index'); ?>">Kembali</a>
         </div>
         <!-- /.col -->
       </div>

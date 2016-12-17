@@ -22,7 +22,7 @@ class Pengadaan extends CI_Controller {
                 $this->currentuser = $this->session->userdata('username');
                 $config = array('server'            => rest_url,
 				                'api_key'         => 'Bearer '.$this->session->userdata['token'],
-				                'api_name'        => 'Authorization'
+				                'api_name'        => 'authorization'
 				                //'http_user'       => 'username',
 				                //'http_pass'       => 'password',
 				                //'http_auth'       => 'basic',
@@ -37,56 +37,54 @@ class Pengadaan extends CI_Controller {
         }
 	}
     public function index(){
-        $data['obat'] = $this->rest->get('user/pengadaan/obat?username='.$this->currentuser, '','');
-        $data['obat'] = json_decode(json_encode($data['obat']), true);
+        $data['pengadaan_obat'] = $this->rest->get('user/pengadaan/pengadaan_obat?username='.$this->currentuser, '','');
+        $data['pengadaan_obat'] = json_decode(json_encode($data['pengadaan_obat']), true);
         // echo json_encode($data);
         // $this->rest->debug();
+        $this->load->view('template/header');
         $this->load->view('pengadaan/pengadaanview',$data);
+        $this->load->view('template/footer');
     }
 
-	public function Obat()
-	{
+    public function Vendor()
+    {
         $request = $this->input->server('REQUEST_METHOD');
         $id = $this->input->get('id');
-        $data = $this->rest->get('user/kasir/request_obat?username='.$this->currentuser
+        $data = $this->rest->get('user/kasir/pengadaan_obat?username='.$this->currentuser
                                 .'&id='.$id, '','');
         $data = json_decode(json_encode($data[0]), true);
-        $data['price'] = $data['ro_quantity']*$data['o_price'];
+        // $data['price'] = $data['ro_quantity']*$data['o_price'];
         switch ($request) {
             case "GET":
                 // echo json_encode($data[0]);
-                $this->load->view('kasir/withresepview',$data);
+                $this->load->view('template/header');
+                $this->load->view('pengadaan/pengadaanview',$data);
+                $this->load->view('template/footer');
                 // $this->rest->debug();
                 break;
             case "POST":
-				$this->rest->format('application/json');
-				$params = $this->input->post(NULL,TRUE);
-				$currentuser = $this->session->userdata('username');
+                $this->rest->format('application/json');
+                $params = $this->input->post(NULL,TRUE);
+                $currentuser = $this->session->userdata('username');
                 // echo json_encode($data);
-				$user = $this->rest->put('user/kasir/payment?username='.$this->currentuser
-                                        .'&quantity='.$data['ro_quantity'].'&ro_id='.$data['ro_id']
-                                        .'&o_id='.$data['o_id'].'', '','');
+                $user = $this->rest->put('user/pengadaan/add?username='.$this->currentuser
+                                        .'&quantity='.$data['ro_quantity'].'&po_id='.$data['po_id']
+                                        .'&po_vendor='.$data['po_vendor'].'', '','');
 
-				if (isset($user->message)) {
-					$data['message'] = $user->message;
-				}
-				else{
-					$data['message'] = $this->rest->debug();
-				}
-
-				$this->load->view('kasir/withresepview',$data);
+                if (isset($user->message)) {
+                    $data['message'] = $user->message;
+                }
+                else{
+                    $data['message'] = $this->rest->debug();
+                }
+                $this->load->view('template/header');
+                $this->load->view('pengadaan/pengadaanview',$data);
+                $this->load->view('template/footer');
                 // $this->rest->debug();
                 break;
             default:
                 redirect('/');
         }
-	}
-
-
-
-  	/*function __encrip_password($password) {
-        return md5($password);
-    }*/
-
+    }
 
 }

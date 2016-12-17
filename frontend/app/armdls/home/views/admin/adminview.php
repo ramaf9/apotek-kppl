@@ -8,12 +8,12 @@
     <p class="login-box-msg">Selamat Datang, Admin</p>
 
     <div style="text-align: center">
-    <a class="btn btn-app" href="<?php echo base_url('home/admin/addUser'); ?>" align>
+    <a class="btn btn-app" href="<?php echo base_url('admin/addUser'); ?>" align>
       <i class="fa fa-user-plus"></i> Tambah User
     </a>
-    <a class="btn btn-app" href="<?php echo base_url('home/admin/delUser'); ?>">
+    <!-- <a class="btn btn-app" href="<?php echo base_url('admin/delUser'); ?>">
       <i class="fa fa-user-times"></i> Hapus User
-    </a>
+    </a> -->
     <a class="btn btn-app" href="<?php echo base_url('Home/logout'); ?>">
       <i class="fa fa-sign-out"></i> Log out
     </a>
